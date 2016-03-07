@@ -1,0 +1,29 @@
+# folders
+binary/
+build/
+lib/
+
+#Linux backup file
+*.*~
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+# Executables
+*.out
+*.app
+*.elf
+
