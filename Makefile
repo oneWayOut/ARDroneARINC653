@@ -2,11 +2,11 @@
 # ARINC653-simulator head Makefile #
 ####################################
 CC 		:= arm-linux-gnueabi-g++
-INCLUDE_DIR	:= $(shell pwd)/include/libApexArinc653 #$(shell pwd)/include/libApexArinc653Jni
+INCLUDE_DIR	:= $(shell pwd)/include/libApexArinc653
 CC_FLAGS_ALL	:= -Wall -pedantic -g
 LIBS		:= -lpthread -L$(shell pwd)/lib/ -lApexArinc653 -Wl,-rpath $(shell pwd)/lib
 LIBAPEXARINC653_DIR	:= sources/libApexArinc653
-LIBAPEXARINC653JNI_DIR	:= sources/libApexArinc653Jni
+
 
 define SRC_2_OBJ
     $(foreach src,$(1),$(patsubst sources/%,build/%,$(src)))
@@ -58,7 +58,7 @@ mrproper :
 	@find -name *~ | xargs rm -f
 	@find -name "*.fifo" | xargs rm -f
 	@(cd $(shell pwd)/sources/libApexArinc653/ && $(MAKE) $@)
-	@(cd $(shell pwd)/sources/libApexArinc653Jni/ && $(MAKE) $@)
+
 	
 
 symlinks: $(SYMLINKS)
@@ -74,5 +74,5 @@ link :
 
 	
 lib:
-	@(cd $(sell pwd)$(LIBAPEXARINC653_DIR) && $(MAKE) $@)
-	@(cd $(sell pwd)$(LIBAPEXARINC653JNI_DIR) && $(MAKE) $@)
+	@(cd $(shell pwd)/$(LIBAPEXARINC653_DIR) && $(MAKE) $@)
+

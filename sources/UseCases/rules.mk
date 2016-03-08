@@ -30,10 +30,10 @@ d		:= $(dir)
 #dir	:= $(d)/Queueing
 #include	$(dir)/rules.mk
 
-#dir	:= $(d)/Sampling
+dir	:= $(d)/Sampling
 #include	$(dir)/rules.mk
 
-dir	:= $(d)/TEST_TAKEOFF_LAND
+#dir	:= $(d)/TEST_TAKEOFF_LAND
 include	$(dir)/rules.mk
 
 
