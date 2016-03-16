@@ -6,12 +6,14 @@
 int main(int argc, char *argv[]) {
     int redemarrage = atoi(argv[7]);
     int position = atoi(argv[6]);
-    GUI_ARINC_partition("Partition2", position, redemarrage);
+   // GUI_ARINC_partition("Partition2", position, redemarrage);
     int nbarg = argc;
     char **argument = new char*[argc];
     int i = 0;
     for (i = 0; i <= nbarg; i++) {
         argument[i] = argv[i];
+        printf(argv[i]);
+        printf("\n");
     }
     COMMUNICATION_VECTOR myCvector;
     myCvector = init_communication(argument, NULL);
@@ -26,10 +28,11 @@ int main(int argc, char *argv[]) {
 
     for (;;) {
         char sMessage[256];
-        sprintf(sMessage, "Message envoye depuis f2 numero %d", j);
+        sprintf(sMessage, "Message send from P2 No %d", j);
         std::cout << "			" << std::endl;
         std::cout << ">>> Sending message: " << sMessage << std::endl;
-        SEND_QUEUING_MESSAGE(argv[0], portID, sock, myCvector.emetteur, sMessage);
+        //SEND_QUEUING_MESSAGE(argv[0], portID, sock, myCvector.emetteur, sMessage);
+        SEND_QUEUING_MESSAGE("127.0.0.1", portID, sock, myCvector.emetteur, sMessage);
         j++;
         std::cout << "Queuing message sent: " << sMessage << std::endl;
         

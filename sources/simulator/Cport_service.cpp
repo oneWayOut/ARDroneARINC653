@@ -32,13 +32,13 @@ int Cport_service::CREATE_QUEUING_PORT(int portID, int portName, int maxMessage_
         close(sock);
     }
 
-    /*if (bind(sock, (struct sockaddr *) &sa, sizeof (sa)) < 0)
+    if (bind(sock, (struct sockaddr *) &sa, sizeof (sa)) < 0)
     {
         perror("bind 1");
         close(sock);
         return -1;
     }
-*/
+
     std::cout << "socket created : " << sock << std::endl << std::endl;
     return (sock);
 }

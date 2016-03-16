@@ -8,7 +8,8 @@
 
 #define MSG_LENGTH 1000
 
-int SEND_QUEUING_MESSAGE(char *name, int portId, int sock, char *emetteur, char *message, int messageSize);
-int RECEIVE_QUEUING_MESSAGE(int sock, Navdata_def *navdata);
-
+//int SEND_QUEUING_MESSAGE(char *name, int portId, int sock, char *emetteur, char *message, int messageSize);
+int SEND_QUEUING_MESSAGE(char *name, int portId, int sock, char *emetteur, char *message);
+//int RECEIVE_QUEUING_MESSAGE(int sock, Navdata_def *navdata);
+int RECEIVE_QUEUING_MESSAGE(int sock, Type_Message *rMessage);
 #endif
