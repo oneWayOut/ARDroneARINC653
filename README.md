@@ -1,3 +1,10 @@
+Change Log:
+
+2016.3.16
+fix the undefined symbol problem, the use case queueing communication can work in the drone now.
+
+
+
 ARINC653 Standard kernel Simulator for ARDrone
 ==================
 Copied from https://github.com/lwenisch/ardrone;

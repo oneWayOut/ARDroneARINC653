@@ -7,39 +7,95 @@
 #include <netdb.h>
 #include <stdlib.h>
 #include <stdio.h>
+/*typedef int  int QUEUING_PORT_ID_TYPE;
+typedef int  int SYSTEM_TIME_TYPE;
+typedef void void* MESSAGE_ADDR_TYPE;
+typedef int  int MESSAGE_SIZE_TYPE;
+typedef int  int RETURN_CODE_TYPE;*/
 
-int SEND_QUEUING_MESSAGE(char *name, int portId, int sock, char *emetteur, char *message, int messageSize) 
-{
-	const char *str1 = message; //convert char to const char
-	char mess[messageSize];
-	strcpy(mess, str1);
-	struct hostent *s_h;
-	
-	if ((s_h = gethostbyname(name)) == NULL) 
-	{
-		perror("gethostbyname :");
-		return (-1);
-	}
-	struct sockaddr_in s_a;
-	bzero((char *) &s_a, sizeof (s_a));
-	bcopy(s_h->h_addr, (char *) &s_a.sin_addr, s_h->h_length);
-	s_a.sin_family = htonl(s_h->h_addrtype); 
-	s_a.sin_port = htons(portId);
 
-	int numbytes = 0; 
+/**
+ * prototype de fonction un peu plus comforme au standard ARINC 653
+ **/
+/**
+ * 
+ * @param QUEUING_PORT_ID
+ * @param MESSAGE_ADDR
+ * @param LENGTH
+ * @param TIME_OUT
+ * @param RETURN_CODE
+ */
+/*void SEND_QUEUING_MESSAGE(int QUEUING_PORT_ID,void *MESSAGE_ADDR, int LENGTH,long TIME_OUT,int *RETURN_CODE){
+    struct hostent *s_h;
+    if ((s_h = gethostbyname(name)) == NULL) {
+        perror("gethostbyname :");
+        return (-1);
+    }
 
- 	if ((numbytes = sendto(sock, mess, sizeof(mess), 0, (struct sockaddr *)&s_a, sizeof s_a)) == -1) 
-	{
-		perror("sendto");
-		close(sock);
-		return (-1);
-	}
-	
-	return (0);
+    struct sockaddr_in s_a;
+    bzero((char *) &s_a, sizeof (s_a));
+    bcopy(s_h->h_addr, (char *) &s_a.sin_addr, s_h->h_length);
+    s_a.sin_family = htonl(s_h->h_addrtype);
+    s_a.sin_port = htons(portId);
+
+    int nbeff;
+    if ((nbeff = sendto(sock, *MESSAGE_ADDR, LENGTH, 0, (struct sockaddr *) &s_a, sizeof (s_a))) == -1) {
+        perror("sendto");
+        close(sock);
+        return (-1);
+    }
+}*/
+/**
+ * 
+ * @param QUEUING_PORT_ID
+ * @param TIME_OUT
+ * @param MESSAGE_ADDR
+ * @param LENGTH
+ * @param RETURN_CODE
+ * @return 
+ */
+/*int RECEIVE_QUEUING_MESSAGE(QUEUING_PORT_ID_TYPE QUEUING_PORT_ID, SYSTEM_TIME_TYPE TIME_OUT, MESSAGE_ADDR_TYPE MESSAGE_ADDR, MESSAGE_SIZE_TYPE LENGTH, RETURN_CODE_TYPE RETURN_CODE) {
+
+}*/
+/**
+ * 
+ * @param name
+ * @param portId
+ * @param sock
+ * @param emetteur
+ * @param message
+ * @return 
+ */
+int SEND_QUEUING_MESSAGE(char *name, int portId, int sock, char *emetteur, char *message) {
+
+    const char *str1 = message; //convert char to const char
+    Type_Message myMessage;
+    strcpy(myMessage.m_message, str1);
+    myMessage.m_length = sizeof (myMessage.m_message);
+    const char *str2 = emetteur;
+    strcpy(myMessage.m_sender, str2);
+
+    struct hostent *s_h;
+    if ((s_h = gethostbyname(name)) == NULL) {
+        perror("gethostbyname :");
+        return (-1);
+    }
+
+    struct sockaddr_in s_a;
+    bzero((char *) &s_a, sizeof (s_a));
+    bcopy(s_h->h_addr, (char *) &s_a.sin_addr, s_h->h_length);
+    s_a.sin_family = htonl(s_h->h_addrtype);
+    s_a.sin_port = htons(portId);
+
+    int nbeff;
+    if ((nbeff = sendto(sock, &myMessage, sizeof (Type_Message), 0, (struct sockaddr *) &s_a, sizeof (s_a))) == -1) {
+        perror("sendto");
+        close(sock);
+        return (-1);
+    }
+    return (0);
 }
 
-
-/* ORIGINAL VERSION WITH CASTING => won't work on the drone*/
 int RECEIVE_QUEUING_MESSAGE(int sock, Type_Message *rMessage) {
     struct sockaddr_in c_a;
     int lc_a; //longueur structure
@@ -72,4 +128,3 @@ int RECEIVE_QUEUING_MESSAGE(int sock, Type_Message *rMessage) {
         }
     }
 }
-

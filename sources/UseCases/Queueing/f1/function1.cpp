@@ -9,14 +9,16 @@
 int main(int argc, char *argv[]) {
     int redemarrage = atoi(argv[7]);
     int position = atoi(argv[6]);
-    GUI_ARINC_partition("Partition1", position, redemarrage);
-    std::cout << "GUI OK" << std::endl;
+   // GUI_ARINC_partition("Partition1", position, redemarrage);
+   // std::cout << "GUI OK" << std::endl;
     Type_Message rMessage;
     int nbarg = argc;
     char **argument = new char*[argc];
     int i = 0;
     for (i = 0; i <= nbarg; i++) {
         argument[i] = argv[i];
+        printf(argv[i]);
+        printf("\n");
     }
     std::cout << "INIT TO START FROM F1 " << argument[0] << " " << argument[1] << " " << argument[2] << " " << argument[3] << " " << argument[4] << std::endl;
     COMMUNICATION_VECTOR myCvector;
@@ -35,10 +37,11 @@ int main(int argc, char *argv[]) {
 
     for (;;) {
         char sMessage[256];
-        sprintf(sMessage, "Message envoye depuis f1 numero %d", j);
+        sprintf(sMessage, "Message send from P1 No. %d", j);
         std::cout << "			" << std::endl;
         std::cout << ">>> Sending message: " << sMessage << std::endl;
-        SEND_QUEUING_MESSAGE(argv[0], portID, sock, myCvector.emetteur, sMessage);
+        //SEND_QUEUING_MESSAGE(argv[0], portID, sock, myCvector.emetteur, sMessage);
+		SEND_QUEUING_MESSAGE("127.0.0.1", portID, sock, myCvector.emetteur, sMessage);
         j++;
 
         ifmsg = RECEIVE_QUEUING_MESSAGE(sock, &rMessage);
