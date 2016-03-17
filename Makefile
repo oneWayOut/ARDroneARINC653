@@ -5,7 +5,7 @@
 CC 		:= arm-none-linux-gnueabi-g++
 INCLUDE_DIR	:= $(shell pwd)/include/libApexArinc653 #$(shell pwd)/include/libApexArinc653Jni
 CC_FLAGS_ALL	:= -Wall -pedantic -g
-LIBS		:= -lpthread -L$(shell pwd)/lib/ -lApexArinc653 -Wl,-rpath $(shell pwd)/lib
+LIBS		:= -lpthread -L$(shell pwd)/lib/ -lApexArinc653 -Wl,-rpath ./
 LIBAPEXARINC653_DIR	:= sources/libApexArinc653
 #LIBAPEXARINC653JNI_DIR	:= sources/libApexArinc653Jni
 
@@ -74,5 +74,4 @@ link :
 
 	
 lib:
-	@(cd $(sell pwd)$(LIBAPEXARINC653_DIR) && $(MAKE) $@)
-#	@(cd $(sell pwd)$(LIBAPEXARINC653JNI_DIR) && $(MAKE) $@)
+	@(cd $(shell pwd)/$(LIBAPEXARINC653_DIR) && $(MAKE) $@)

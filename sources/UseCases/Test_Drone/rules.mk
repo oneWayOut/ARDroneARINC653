@@ -2,8 +2,8 @@ sp 		:= $(sp).x
 dirstack_$(sp)	:= $(d)
 d		:= $(dir)
 
-dir	:= $(d)/f1
-include	$(dir)/rules.mk
+#dir	:= $(d)/f1
+#include	$(dir)/rules.mk
 
 dir	:= $(d)/f2
 include	$(dir)/rules.mk

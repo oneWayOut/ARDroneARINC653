@@ -33,7 +33,7 @@ dir	:= $(d)/Queueing
 #dir	:= $(d)/TestCai
 #include	$(dir)/rules.mk
 
-#dir	:= $(d)/TEST_TAKEOFF_LAND
+dir	:= $(d)/Test_Drone
 include	$(dir)/rules.mk
 
 

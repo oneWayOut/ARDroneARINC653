@@ -43,7 +43,7 @@ communication_test_P1: 	communication_test_P1.o 			    					\
 			../../../../build/libApexArinc653/Vector.o
 #			CBasefunction.o
 
-	$(CC) $(CFLAGS) -o $@.elf $^
+	$(CC) $(CFLAGS) -o $@.out $^
 
 
 .PHONY: depend clean realclean all tests

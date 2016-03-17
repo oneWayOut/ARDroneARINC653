@@ -159,7 +159,7 @@ int main(int argc, char *argv[])
     SEND_QUEUING_MESSAGE(name_machine, portID, sock, myCvector.emetteur, sMessage, sizeof(sMessage));
     /*****************************/
     
-    while(!sys_time_check_and_ack_timer(main_tid)){
+    /*while(!sys_time_check_and_ack_timer(main_tid)){
         //periodic
         if(sys_time_check_and_ack_timer(main_periodic_tid)){
             imu_periodic();
@@ -188,7 +188,7 @@ int main(int argc, char *argv[])
             }else{
                 altitude -=512;
             }
-            printf("poussée est de %d\n",altitude);*/
+            printf("poussée est de %d\n",altitude);
             
             if (RECEIVE_QUEUING_MESSAGE(sock, &rMessage) > 0) {
                 
@@ -205,6 +205,29 @@ int main(int argc, char *argv[])
             
             printf("Altitude : %d\n",altitude);
         }
+        
+    }*/
+	int j = 0;    
+    for ( ; ; ){
+        
+        /* ENVOI DU MESSAGE EN QUEUING */
+        SEND_QUEUING_MESSAGE(name_machine, portID, sock, myCvector.emetteur, sMessage, sizeof(sMessage));
+        printf("Message sent from P1: %s\n\n", sMessage);
+        
+        /* UPDATING MESSAGE */
+        sprintf(sMessage, "test P1 %d", j);
+        j++;
+        
+        /* RECEPTION MESSAGE EN QUEUING */
+        
+        if (RECEIVE_QUEUING_MESSAGE(sock, &rMessage) > 0) {
+            
+            sscanf(rMessage.m_message,"%s", &messageReceived); // message received from P2
+            printf("Message received from P2: %s\n\n", &messageReceived);
+            
+        } else printf("No new message from P2\n");
+        
+        usleep(100000);
         
     }
     
