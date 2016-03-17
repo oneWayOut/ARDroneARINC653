@@ -4,7 +4,7 @@ build/
 lib/
 
 #Linux backup file
-*.*~
+*~
 
 # Compiled Object files
 *.slo

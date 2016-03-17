@@ -66,7 +66,9 @@ typedef int  int RETURN_CODE_TYPE;*/
  * @param message
  * @return 
  */
-int SEND_QUEUING_MESSAGE(char *name, int portId, int sock, char *emetteur, char *message) {
+//int SEND_QUEUING_MESSAGE(char *name, int portId, int sock, char *emetteur, char *message) {
+//TODO add msgSize in the function
+int SEND_QUEUING_MESSAGE(char *name, int portId, int sock, char *emetteur, char *message, int msgSize) {
 
     const char *str1 = message; //convert char to const char
     Type_Message myMessage;

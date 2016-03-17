@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
         std::cout << "			" << std::endl;
         std::cout << ">>> Sending message: " << sMessage << std::endl;
         //SEND_QUEUING_MESSAGE(argv[0], portID, sock, myCvector.emetteur, sMessage);
-		SEND_QUEUING_MESSAGE("127.0.0.1", portID, sock, myCvector.emetteur, sMessage);
+		SEND_QUEUING_MESSAGE("127.0.0.1", portID, sock, myCvector.emetteur, sMessage, sizeof(sMessage));
         j++;
 
         ifmsg = RECEIVE_QUEUING_MESSAGE(sock, &rMessage);
