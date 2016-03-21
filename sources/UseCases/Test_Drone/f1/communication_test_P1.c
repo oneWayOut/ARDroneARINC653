@@ -126,7 +126,7 @@ int main(int argc, char *argv[])
     guidance_v_init();
     ins_init();
 
-    main_tid = sys_time_register_timer(40,NULL);
+    main_tid = sys_time_register_timer(60,NULL);
     main_periodic_tid = sys_time_register_timer((1./PERIODIC_FREQUENCY),NULL);
     print_tid = sys_time_register_timer((1./500.),NULL);
     land_tid = sys_time_register_timer((4),NULL);
@@ -151,6 +151,8 @@ int main(int argc, char *argv[])
     char messageReceived[256];
     char sMessage[256];
 
+	int t=0;
+
     vector_get(&(myCvector.vqueuing_port), 0, &portID);
     vector_get(&(myCvector.vqueuing_socket), 0, &sock);
 
@@ -158,6 +160,7 @@ int main(int argc, char *argv[])
     sprintf(sMessage, "INIT_DONE");
     SEND_QUEUING_MESSAGE(name_machine, portID, sock, myCvector.emetteur, sMessage, sizeof(sMessage));
     /*****************************/
+
 
     while(!sys_time_check_and_ack_timer(main_tid)){
         //periodic
@@ -170,7 +173,28 @@ int main(int argc, char *argv[])
         if(ahrs.status && sys_time_check_and_ack_timer(print_tid)){
 
             stabilization_attitude_run(true);
-            guidance_v_run(true,altitude);
+            //guidance_v_run(true,altitude);
+
+			//fixed point representation: Q23.8;  So 1<<7 is 0.5m
+				//guidance_v_run(true,6<<7);  // 3m
+            if(t==0)
+            {
+				guidance_v_run(true,13<<6); // 1<<6 is 0.25m, 13*0.25 = 3.25m
+            }
+            else if(t == 20*500) //20 seconds
+            {
+                guidance_v_run(true, 6<<6);
+            }
+            else if(t==40*500) // 40 seconds
+            {
+                 guidance_v_run(true,0);
+            }
+            else
+                ;
+
+            t++;
+
+
             commands[0]=stabilization_cmd[0];
             commands[1]=stabilization_cmd[1];
             commands[2]=stabilization_cmd[2];
