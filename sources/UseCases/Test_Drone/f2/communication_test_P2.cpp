@@ -11,7 +11,7 @@
 int main(int argc, char *argv[])
 {
 	//The simulator isn't able to find the machine name alone, we have to hardcode it
-	char * name_machine = "192.168.1.1";
+	char * name_machine = "127.0.0.1";
 	int nbarg = argc;
 	char **argument = new char*[argc];
 	int i = 0;
@@ -41,6 +41,23 @@ int main(int argc, char *argv[])
 
     int INIT_DONE = 0;
 
+    i = 0;
+	while(1)
+	{
+		if(RECEIVE_QUEUING_MESSAGE(sock, &rMessage) > 0)
+        {
+            printf("P2 received: %s\n",rMessage.m_message);
+            i++;
+            sprintf(sMessage, "SENT FROM P2 to P1 No %d", i);
+            SEND_QUEUING_MESSAGE(name_machine, portID, sock, myCvector.emetteur, sMessage, sizeof(sMessage));
+        }
+        else
+            sleep(1);
+			
+	}
+
+
+#if 0
     while(RECEIVE_QUEUING_MESSAGE(sock, &rMessage) <= 0) {
         ;
     }
@@ -80,6 +97,7 @@ int main(int argc, char *argv[])
 
         }
     }
+#endif
 
 	return 0;
 }

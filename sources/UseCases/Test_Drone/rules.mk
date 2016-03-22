@@ -2,7 +2,7 @@ sp 		:= $(sp).x
 dirstack_$(sp)	:= $(d)
 d		:= $(dir)
 
-#dir	:= $(d)/f1
+#dir	:= $(d)/f3
 #include	$(dir)/rules.mk
 
 dir	:= $(d)/f2

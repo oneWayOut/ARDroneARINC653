@@ -6,6 +6,14 @@ lib/
 #Linux backup file
 *~
 
+#QT Creator Project files
+*.config
+*.creator
+*.creator.user
+*.files
+*.includes
+
+
 # Compiled Object files
 *.slo
 *.lo

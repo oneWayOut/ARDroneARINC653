@@ -40,8 +40,6 @@
 #define messageSize 256
 #define ALTITUDE_MAX (1<<8)
 
-FILE* P1 = NULL;
-
 static inline void on_accel_event( void ) {
     ImuScaleAccel(imu);
 
@@ -82,34 +80,21 @@ int32_t altitude=0;
 int main(int argc, char *argv[])
 {
 	//The simulator isn't able to find the machine name alone, we have to hardcode it
-	char * name_machine = "192.168.1.1";
+	char * name_machine = "127.0.0.1";
 	int nbarg = argc;
 	// char **argument = new char*[argc];
     //char **argument= malloc( argc *sizeof(char));
 	int i = 0;
     Type_Message rMessage;
 
-	P1 = fopen("P1.txt", "w");
 
 	for (i = 0; i <= nbarg; i++)
 	{
-		//argument[i] = argv[i];
-		fprintf(P1, "Argument[%d] : %c\n", i, argv[i]);
+		printf("Argument[%d] : %s\n", i, argv[i]);
 	}
 
-/*
-   	fprintf(P1, "Nom : %s\n", name_machine);
-    fprintf(P1, "Port : %d\n", portID);
-    fprintf(P1, "MyCVector_Sock : %d\n", myCvector.vqueuing_socket);
-	fprintf(P1, "Sock : %d\n", sock);
-    fprintf(P1, "Emetteur : %c\n", myCvector.emetteur);
-    fprintf(P1, "sMessage : %c\n", sMessage);
-    fprintf(P1, "Message size : %d\n", messageSize);
-	fclose(P1);*/
-
-    /******************************/
-
     printf("Initialisation\n");
+#if 0
     actuators_init();
     actuators_led_set(RED,RED,RED,RED);
 
@@ -134,7 +119,7 @@ int main(int argc, char *argv[])
 
     printf("Update imu\n");
     actuators_led_set(GREEN,GREEN,GREEN,GREEN);
-
+#endif
 	//sock0 = 78576;
 
     printf("Initialisation ARINC653");
@@ -161,7 +146,22 @@ int main(int argc, char *argv[])
     SEND_QUEUING_MESSAGE(name_machine, portID, sock, myCvector.emetteur, sMessage, sizeof(sMessage));
     /*****************************/
 
+	i = 0;
+	while(1)
+	{
+		      
+        if (RECEIVE_QUEUING_MESSAGE(sock, &rMessage) > 0)
+        {
+            printf("P1 received: %s\n", rMessage.m_message);
+        	i++;
+        	sprintf(sMessage, "SENT FROM P1 to P2 No %d", i);
+			SEND_QUEUING_MESSAGE(name_machine, portID, sock, myCvector.emetteur, sMessage, sizeof(sMessage));
+        }
+		else
+			sleep(1);
+	}
 
+#if 0
     while(!sys_time_check_and_ack_timer(main_tid)){
         //periodic
         if(sys_time_check_and_ack_timer(main_periodic_tid)){
@@ -235,7 +235,7 @@ int main(int argc, char *argv[])
     printf("Fin acquisition\n");
     log_close();
     actuators_ardrone_close();
-
+#endif
 	return 0;
 }
 
