@@ -8,6 +8,9 @@ include	$(dir)/rules.mk
 dir	:= $(d)/f2
 include	$(dir)/rules.mk
 
+dir	:= $(d)/f3
+include	$(dir)/rules.mk
+
 
 
 #for the automatic creation of symbolic links

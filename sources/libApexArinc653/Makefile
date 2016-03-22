@@ -2,8 +2,8 @@
 # ARINC653-simulator libApexArinc653 Makefile #
 ###############################################
 
-CC 		:= arm-linux-gnueabi-g++
-#CC 	:= g++
+#CC 		:= arm-linux-gnueabi-g++
+CC 	:= g++
 
 #CFLAGS= -fPIC -Wall #-fPIC -W -Wall -ansi -pedantic
 CFLAGS= -fPIC -Wall -pedantic

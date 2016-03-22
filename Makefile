@@ -1,10 +1,11 @@
 ####################################
 # ARINC653-simulator head Makefile #
 ####################################
+CC 		:= g++
 #CC 		:= arm-none-linux-gnueabi-g++
-CC 		:= arm-none-linux-gnueabi-g++
 INCLUDE_DIR	:= $(shell pwd)/include/libApexArinc653 #$(shell pwd)/include/libApexArinc653Jni
-CC_FLAGS_ALL	:= -Wall -pedantic -g
+#CC_FLAGS_ALL	:= -Wall -pedantic -g
+CC_FLAGS_ALL := -fPIC -Wall -pedantic
 LIBS		:= -lpthread -L$(shell pwd)/lib/ -lApexArinc653 -Wl,-rpath ./
 LIBAPEXARINC653_DIR	:= sources/libApexArinc653
 #LIBAPEXARINC653JNI_DIR	:= sources/libApexArinc653Jni
@@ -21,12 +22,12 @@ define SRC_2_SYM
     $(foreach src,$(1),$(patsubst sources/%.sym,binary/%,$(src)))
 endef
 
-all: lib targets 
+all: lib targets
 
 build/%.o: sources/%.cpp
 	@echo "  [CC]    $< -> $@"
 	@mkdir -p $(dir $@)
-	@$(CC) $(CC_FLAGS_ALL) $(CC_FLAGS_SPEC) -I$(INCLUDE_DIR) -o $@ -c $< 
+	@$(CC) $(CC_FLAGS_ALL) $(CC_FLAGS_SPEC) -I$(INCLUDE_DIR) -o $@ -c $<
 
 %.sym :
 	for path in $^ ; do \
@@ -68,10 +69,10 @@ info:
 	@echo Targets [$(TARGETS)]
 	@echo Objects [$(OBJECTS)]
 	@echo Symlinks [$(SYMLINKS)]
-	
+
 link :
 	@export LD_LIBRARY_PATH=$(shell pwd)/lib/
 
-	
+
 lib:
 	@(cd $(shell pwd)/$(LIBAPEXARINC653_DIR) && $(MAKE) $@)

@@ -1,7 +1,10 @@
-#CC=arm-none-linux-gnueabi-gcc
-CC=arm-none-linux-gnueabi-g++
+# CC=arm-none-linux-gnueabi-g++
+# LS=$(CC)
+# CFLAGS= -march=armv7-a -lm
+
+CC 	:= g++
 LS=$(CC)
-CFLAGS= -march=armv7-a -lm
+CFLAGS= -fPIC -Wall -pedantic
 
 EXE = communication_test_P1 \
 	  clean
