@@ -27,8 +27,8 @@ d		:= $(dir)
 #dir	:= $(d)/petshop
 #include	$(dir)/rules.mk
 
-#dir	:= $(d)/Queueing
-#include	$(dir)/rules.mk
+dir	:= $(d)/Queueing
+include	$(dir)/rules.mk
 
 #dir	:= $(d)/TestCai
 #include	$(dir)/rules.mk
