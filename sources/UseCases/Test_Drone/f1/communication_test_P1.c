@@ -42,6 +42,8 @@
 #define messageSize 256
 #define ALTITUDE_MAX (1<<8)
 
+#define TESTINLINUX 1
+
 static inline void on_accel_event( void ) {
     ImuScaleAccel(imu);
 
@@ -101,7 +103,7 @@ int main(int argc, char *argv[])
 	}
 
     printf("Initialisation\n");
-#if 1
+#if !TESTINLINUX
     actuators_init();
     actuators_led_set(RED,RED,RED,RED);
 
@@ -155,122 +157,103 @@ int main(int argc, char *argv[])
         vector_get(&(myCvector.vqueuing_socket), i, &sock[i]);
     }
     
-#if 0
-    /* ENVOIE MESSAGE INIT DONE */
-    sprintf(sMessage, "INIT_DONE");
-    SEND_QUEUING_MESSAGE(name_machine, portID[0], sock[0], myCvector.emetteur, sMessage, sizeof(sMessage));
-    SEND_QUEUING_MESSAGE(name_machine, portID[1], sock[1], myCvector.emetteur, sMessage, sizeof(sMessage));
-    /*****************************/
-
-	i = 0;
-	while(1)
-	{
-
-
-        for(i = 0; i<2; i++) {
-            if (RECEIVE_QUEUING_MESSAGE(sock[i], &rMessage[i]) > 0)
-            {
-                printf("P1 received: %s\n", rMessage[i].m_message);
-                msgIndex[i]++;
-                sprintf(sMessage, "SENT FROM P1 to P%d No %d", i+2, msgIndex[i]);
-                SEND_QUEUING_MESSAGE(name_machine, portID[i], sock[i], myCvector.emetteur, sMessage, sizeof(sMessage));
-            }
-            else
-            {
-                sleep(1);
-                printf("p1 Nothing received from P%d.\n", i+2);
-            }
-        }   
-
-	
-	}
-#endif 
 
     sprintf(sMessage, "P1 INIT_DONE");
     SEND_QUEUING_MESSAGE(name_machine, portID[0], sock[0], myCvector.emetteur, sMessage, sizeof(sMessage)); 
 
-#if 1
+
     while(1){
-        //periodic
+
+#if !TESTINLINUX
+        //period
         if(sys_time_check_and_ack_timer(main_periodic_tid)){
             imu_periodic();
         }
 
         //event
         imu_event(on_gyro_event, on_accel_event, on_mag_event);
-        if(ahrs.status && sys_time_check_and_ack_timer(print_tid)){
-
-
-
-        height = navdata_getHeight();
-        msgID = DRONE_MSG_ALT;
-
-        altReal = (int)height;
-
-        memcpy(sMessage, &msgID, 4);
-        memcpy(sMessage+4, &altReal, 4);
-       // printf("P1 ultrasonic height= %d\n", altReal);
-        SEND_QUEUING_MESSAGE(name_machine, portID[0], sock[0], myCvector.emetteur, sMessage, sizeof(sMessage));
-
-
-        if (droneCMD!=2 && RECEIVE_QUEUING_MESSAGE(sock[0], &rMessage[0]) > 0)
+        if(ahrs.status && sys_time_check_and_ack_timer(print_tid))
         {
-            memcpy(&msgID, rMessage[0].m_message, 4);
-            printf("P1 received msgID = %d\n", msgID);
-            switch(msgID)
-            {
-            case DRONE_MSG_ALT:
-                memcpy(&altSetPt, rMessage[0].m_message+4, 4);
-                altSetPt *= 2.56;  /*1cm: 0.01m*2^8=2.56 because of fixed point representation: Q23.8*/
-                break;
-            case DRONE_MSG_CMD:
-                memcpy(&droneCMD, rMessage[0].m_message+4, 4);
-                printf("droneCMD=%d\n", droneCMD);
-                break;
-            default:
+       	    height = navdata_getHeight();
+#else
+        if(1)
+        {
+            sleep(1);
+               			
+            height = 1;
+#endif
 
-                break;
+            msgID = DRONE_MSG_ALT;
+            altReal = (int)height;
+
+            memcpy(sMessage, &msgID, 4);
+            memcpy(sMessage+4, &altReal, 4);
+            printf("P1 ultrasonic height= %d\n", altReal);
+            SEND_QUEUING_MESSAGE(name_machine, portID[0], sock[0], myCvector.emetteur, sMessage, sizeof(sMessage));
+
+
+            if (droneCMD!=2 && RECEIVE_QUEUING_MESSAGE(sock[0], &rMessage[0]) > 0)
+            {
+                memcpy(&msgID, rMessage[0].m_message, 4);
+                printf("P1 received msgID = %d\n", msgID);
+                switch(msgID)
+                {
+                case DRONE_MSG_ALT:
+                    memcpy(&altSetPt, rMessage[0].m_message+4, 4);
+                    altSetPt *= 2.56;  /*1cm: 0.01m*2^8=2.56 because of fixed point representation: Q23.8*/
+                    break;
+                case DRONE_MSG_CMD:
+                    memcpy(&droneCMD, rMessage[0].m_message+4, 4);
+                    printf("droneCMD=%d\n", droneCMD);
+                    break;
+                default:
+
+                    break;
+                }
             }
-        }
 
-        if (droneCMD==1) //takeoff
-        {
-            printf("start takeoff\n");
-            altSetPt = 13<<6;
-            guidance_v_run(true,altSetPt);
-
-            droneCMD = 0;
-        }
-        else if (droneCMD==2) //land
-        {
-            printf("start landing\n");
-            if(ahrs.status && sys_time_check_and_ack_timer(land_tid))
+            if (droneCMD==1) //takeoff
             {
-                if(height<1)
+                printf("start takeoff\n");
+                altSetPt = 13<<6;
+                #if !TESTINLINUX
+                guidance_v_run(true,altSetPt);
+                #endif
+
+                droneCMD = 0;
+            }
+            else if (droneCMD==2) //land
+            {
+                printf("start landing\n");
+                if(ahrs.status && sys_time_check_and_ack_timer(land_tid))
                 {
-                    stabilization_cmd[0] = 0;
-                    stabilization_cmd[1] = 0;
-                    stabilization_cmd[2] = 0;
-                    stabilization_cmd[3] = 0;
-                }
-                else
-                {
-                    if (altSetPt>3)
-                        altSetPt -= 3;                        
+                    if(height<1)
+                    {
+                        stabilization_cmd[0] = 0;
+                        stabilization_cmd[1] = 0;
+                        stabilization_cmd[2] = 0;
+                        stabilization_cmd[3] = 0;
+                    }
                     else
-                        altSetPt = 0;
-                    guidance_v_run(true,altSetPt);
+                    {
+                        if (altSetPt>3)
+                            altSetPt -= 3;                        
+                        else
+                            altSetPt = 0;
+                        #if !TESTINLINUX
+                        guidance_v_run(true,altSetPt);
+                        #endif
+                        
+                    }
                     
-                }
-                
-            }            
-        }
-        else
-            ;
+                }            
+            }
+            else
+                ;
 
-
+#if !TESTINLINUX
             stabilization_attitude_run(true);
-
+#endif
             commands[0]=stabilization_cmd[0];
             commands[1]=stabilization_cmd[1];
             commands[2]=stabilization_cmd[2];
@@ -283,6 +266,8 @@ int main(int argc, char *argv[])
     }
 
     printf("Fin acquisition\n");
+
+#if !TESTINLINUX
     log_close();
     actuators_ardrone_close();
 #endif

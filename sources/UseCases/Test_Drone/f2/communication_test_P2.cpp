@@ -100,11 +100,17 @@ int main(int argc, char *argv[])
         if(RECEIVE_QUEUING_MESSAGE(sock, &rMessage)>0)
         {
             memcpy(&msgID, rMessage.m_message, 4);
+            printf("P2 received msg ID=%d\n", msgID);
+
+            //TEST
+            memcpy(&msgCont, rMessage.m_message+4, 4);
+            printf("P2 received height= %d cm\n", (int)msgCont);
             switch(msgID)
             {
             case DRONE_MSG_ALT:
-                memcpy(&msgCont, rMessage.m_message+4, 4);
-                printf("P2 received height= %d cm\n", (int)msgCont);
+            //TEST
+               // memcpy(&msgCont, rMessage.m_message+4, 4);
+               // printf("P2 received height= %d cm\n", (int)msgCont);
                 break;
             default:
                 break;
