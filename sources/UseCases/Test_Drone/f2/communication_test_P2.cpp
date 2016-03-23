@@ -44,16 +44,18 @@ int main(int argc, char *argv[])
     i = 0;
 	while(1)
 	{
-		if(RECEIVE_QUEUING_MESSAGE(sock, &rMessage) > 0)
+        if (RECEIVE_QUEUING_MESSAGE(sock, &rMessage) > 0)
         {
-            printf("P2 received: %s\n",rMessage.m_message);
+            printf("P2 received: %s\n", rMessage.m_message);
             i++;
-            sprintf(sMessage, "SENT FROM P2 to P1 No %d", i);
+            sprintf(sMessage,"P2 send No %d", i);
             SEND_QUEUING_MESSAGE(name_machine, portID, sock, myCvector.emetteur, sMessage, sizeof(sMessage));
         }
         else
+        {
+            printf("P2 received nothing\n");
             sleep(1);
-			
+        }
 	}
 
 

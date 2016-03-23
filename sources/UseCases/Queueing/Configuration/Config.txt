@@ -7,6 +7,6 @@
 %ports number 
 % Il ne doit pas y avoir d espace en plus !!
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-P1 ./f1.out 300000
-P2 ./f2.out 300000
-P3 ./f3.out 300000
+P1 ./f1/f1.out 300000
+P2 ./f2/f2.out 300000
+P1 ./f1/f3.out 300000

@@ -85,7 +85,8 @@ int main(int argc, char *argv[])
 	// char **argument = new char*[argc];
     //char **argument= malloc( argc *sizeof(char));
 	int i = 0;
-    Type_Message rMessage;
+    Type_Message rMessage[2];
+    int msgIndex[2] = {0,0};
 
 
 	for (i = 0; i <= nbarg; i++)
@@ -130,35 +131,46 @@ int main(int argc, char *argv[])
     //myCvector = init_communication(argument, NULL);
     myCvector = init_communication(argv, NULL);
 
-    int portID;
-    int sock;
+    int portID[10];
+    int sock[10];
 
-    char messageReceived[256];
     char sMessage[256];
 
 	int t=0;
-
-    vector_get(&(myCvector.vqueuing_port), 0, &portID);
-    vector_get(&(myCvector.vqueuing_socket), 0, &sock);
+	
+    printf("port number: %d\n", myCvector.vqueuing_port.size);
+    for(i=0; i<myCvector.vqueuing_port.size; i++)
+    {
+        vector_get(&(myCvector.vqueuing_port), i, &portID[i]);
+        vector_get(&(myCvector.vqueuing_socket), i, &sock[i]);
+    }
+    
 
     /* ENVOIE MESSAGE INIT DONE */
     sprintf(sMessage, "INIT_DONE");
-    SEND_QUEUING_MESSAGE(name_machine, portID, sock, myCvector.emetteur, sMessage, sizeof(sMessage));
+    SEND_QUEUING_MESSAGE(name_machine, portID[0], sock[0], myCvector.emetteur, sMessage, sizeof(sMessage));
+    SEND_QUEUING_MESSAGE(name_machine, portID[1], sock[1], myCvector.emetteur, sMessage, sizeof(sMessage));
     /*****************************/
 
 	i = 0;
 	while(1)
-	{
-		      
-        if (RECEIVE_QUEUING_MESSAGE(sock, &rMessage) > 0)
-        {
-            printf("P1 received: %s\n", rMessage.m_message);
-        	i++;
-        	sprintf(sMessage, "SENT FROM P1 to P2 No %d", i);
-			SEND_QUEUING_MESSAGE(name_machine, portID, sock, myCvector.emetteur, sMessage, sizeof(sMessage));
-        }
-		else
-			sleep(1);
+	{		
+        for(i = 0; i<2; i++) {
+            if (RECEIVE_QUEUING_MESSAGE(sock[i], &rMessage[i]) > 0)
+            {
+                printf("P1 received: %s\n", rMessage[i].m_message);
+                msgIndex[i]++;
+                sprintf(sMessage, "SENT FROM P1 to P%d No %d", i+2, msgIndex[i]);
+                SEND_QUEUING_MESSAGE(name_machine, portID[i], sock[i], myCvector.emetteur, sMessage, sizeof(sMessage));
+            }
+            else
+            {
+                sleep(1);
+                printf("p1 Nothing received from P%d.\n", i+2);
+            }
+        }   
+
+		
 	}
 
 #if 0
