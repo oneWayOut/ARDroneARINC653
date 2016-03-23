@@ -2,10 +2,10 @@ sp 		:= $(sp).x
 dirstack_$(sp)	:= $(d)
 d		:= $(dir)
 
-dir	:= $(d)/f3
+dir	:= $(d)/f2
 include	$(dir)/rules.mk
 
-dir	:= $(d)/f2
+dir	:= $(d)/f3
 include	$(dir)/rules.mk
 
 #for the automatic creation of symbolic links

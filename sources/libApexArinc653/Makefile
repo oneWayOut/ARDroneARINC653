@@ -6,7 +6,7 @@
 CC 	:= g++
 
 #CFLAGS= -fPIC -Wall #-fPIC -W -Wall -ansi -pedantic
-CFLAGS= -fPIC -Wall -pedantic
+CFLAGS= -fPIC -Wall -pedantic -ggdb
 LDFLAGS=
 INCLUDE_DIR	:= ../../include/libApexArinc653
 BUILD_DIR	:=	
