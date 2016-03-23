@@ -4,9 +4,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "droneMsgHeader.h"
+
 #define messageSize 256
 #define ALTITUDE_STEP (1<<6)
 #define ALTITUDE_MAX (1<<8)
+
+
+static int32_t msgID = 0;
+static int32_t msgCont = 0;
 
 int main(int argc, char *argv[])
 {
@@ -22,7 +28,7 @@ int main(int argc, char *argv[])
 		argument[i] = argv[i];
 	}
 
-    printf("Initialisation ARINC653");
+    printf("Initialisation ARINC653\n");
 
 	//Communication initialization
 	COMMUNICATION_VECTOR myCvector;
@@ -42,8 +48,17 @@ int main(int argc, char *argv[])
     int INIT_DONE = 0;
 
     i = 0;
+
+    memset(sMessage, 0, 256);
+
+
+
+
+
+#if 0
 	while(1)
 	{
+
         if (RECEIVE_QUEUING_MESSAGE(sock, &rMessage) > 0)
         {
             printf("P2 received: %s\n", rMessage.m_message);
@@ -57,49 +72,56 @@ int main(int argc, char *argv[])
             sleep(1);
         }
 	}
+#endif
 
 
-#if 0
     while(RECEIVE_QUEUING_MESSAGE(sock, &rMessage) <= 0) {
         ;
     }
 
-    printf("Message received from P1: %s", rMessage.m_message);
-
-    strcpy(sMessage_rcv,"INIT_DONE");
-
-    if(strcmp(rMessage.m_message,sMessage_rcv) == 0) {
-
-        printf("Beginning of command loop... \n");
-        int32_t altitude = 0;
-
-        for ( ; ; ) {
-
-            while (altitude < ALTITUDE_MAX) {
-                sprintf(sMessage, "%d", ALTITUDE_STEP);
-                SEND_QUEUING_MESSAGE(name_machine, portID, sock, myCvector.emetteur, sMessage, sizeof(sMessage));
-                printf("Message sent from P2: %s", sMessage);
-
-                altitude += ALTITUDE_STEP;
-
-                usleep(10000);
-            }
-
-            usleep(10000);
-
-            // while (altitude != 0) {
-            //     sprintf(sMessage, "%d", -ALTITUDE_STEP);
-            //     SEND_QUEUING_MESSAGE(name_machine, portID, sock, myCvector.emetteur, sMessage, sizeof(sMessage));
-            //     printf("Message sent from P2: %s", sMessage);
-
-            //     altitude -= ALTITUDE_STEP;
-
-            //     usleep(10000);
-            // }
-
-        }
+    if(strcmp(rMessage.m_message,"P1 INIT_DONE") == 0) {
+        printf("P2 Beginning of command loop... \n");
     }
-#endif
+    else
+    {
+        printf("p2 failed : Received %s from P1\n", rMessage.m_message);
+        return 0;
+    }
+
+    sleep(1);
+    msgID = DRONE_MSG_CMD;
+    msgCont = 1;  //take off
+    memcpy(sMessage,&msgID, 4);
+    memcpy(sMessage+4, &msgCont, 4);
+    printf("p2 send takeoff cmd = %d\n", msgCont);
+    SEND_QUEUING_MESSAGE(name_machine, portID, sock, myCvector.emetteur, sMessage, sizeof(sMessage));
+
+    for (i=0; i<400 ; i++) { 
+        if(RECEIVE_QUEUING_MESSAGE(sock, &rMessage)>0)
+        {
+            memcpy(&msgID, rMessage.m_message, 4);
+            switch(msgID)
+            {
+            case DRONE_MSG_ALT:
+                memcpy(&msgCont, rMessage.m_message+4, 4);
+                printf("P2 received height= %d cm\n", (int)msgCont);
+                break;
+            default:
+                break;
+            }
+        }
+
+        usleep(100000);
+    }
+
+    msgID = DRONE_MSG_CMD;
+    msgCont = 2; //land
+    memcpy(sMessage,&msgID, 4);
+    memcpy(sMessage+4, &msgCont, 4);
+    SEND_QUEUING_MESSAGE(name_machine, portID, sock, myCvector.emetteur, sMessage, sizeof(sMessage));
+    sleep(3);
+
+
 
 	return 0;
 }

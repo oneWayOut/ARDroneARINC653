@@ -37,6 +37,8 @@
 //Header ARINC653
 #include "../../../../include/libApexArinc653/CBasefunction.h"
 
+#include "droneMsgHeader.h"
+
 #define messageSize 256
 #define ALTITUDE_MAX (1<<8)
 
@@ -69,13 +71,15 @@ static inline void on_mag_event(void) {
     }
 }
 
-tid_t main_tid;
-tid_t main_periodic_tid;
-tid_t print_tid;
-tid_t land_tid;
-int fin=0;
-int inc =0;
-int32_t altitude=0;
+static tid_t main_tid;
+static tid_t main_periodic_tid;
+static tid_t print_tid;
+static tid_t land_tid;
+static int fin=0;
+static int inc =0;
+static int32_t droneCMD = 0;  /*0 nothing, 1 takeoff 2 land*/
+static int32_t altSetPt = 0;    /*fixed point representation: Q23.8. in m*/
+static int32_t altReal = 0;  /*in cm*/
 
 int main(int argc, char *argv[])
 {
@@ -88,6 +92,8 @@ int main(int argc, char *argv[])
     Type_Message rMessage[2];
     int msgIndex[2] = {0,0};
 
+    int16_t height=0;
+
 
 	for (i = 0; i <= nbarg; i++)
 	{
@@ -95,7 +101,7 @@ int main(int argc, char *argv[])
 	}
 
     printf("Initialisation\n");
-#if 0
+#if 1
     actuators_init();
     actuators_led_set(RED,RED,RED,RED);
 
@@ -115,7 +121,7 @@ int main(int argc, char *argv[])
     main_tid = sys_time_register_timer(60,NULL);
     main_periodic_tid = sys_time_register_timer((1./PERIODIC_FREQUENCY),NULL);
     print_tid = sys_time_register_timer((1./500.),NULL);
-    land_tid = sys_time_register_timer((4),NULL);
+    land_tid = sys_time_register_timer(1./25.,NULL);
 
 
     printf("Update imu\n");
@@ -123,7 +129,7 @@ int main(int argc, char *argv[])
 #endif
 	//sock0 = 78576;
 
-    printf("Initialisation ARINC653");
+    printf("Initialisation ARINC653\n");
 
     //Communication initialization
     COMMUNICATION_VECTOR myCvector;
@@ -134,9 +140,13 @@ int main(int argc, char *argv[])
     int portID[10];
     int sock[10];
 
+    int32_t msgID = 0;
+
     char sMessage[256];
 
 	int t=0;
+
+    memset(sMessage, 0, 256);
 	
     printf("port number: %d\n", myCvector.vqueuing_port.size);
     for(i=0; i<myCvector.vqueuing_port.size; i++)
@@ -145,7 +155,7 @@ int main(int argc, char *argv[])
         vector_get(&(myCvector.vqueuing_socket), i, &sock[i]);
     }
     
-
+#if 0
     /* ENVOIE MESSAGE INIT DONE */
     sprintf(sMessage, "INIT_DONE");
     SEND_QUEUING_MESSAGE(name_machine, portID[0], sock[0], myCvector.emetteur, sMessage, sizeof(sMessage));
@@ -154,7 +164,9 @@ int main(int argc, char *argv[])
 
 	i = 0;
 	while(1)
-	{		
+	{
+
+
         for(i = 0; i<2; i++) {
             if (RECEIVE_QUEUING_MESSAGE(sock[i], &rMessage[i]) > 0)
             {
@@ -170,11 +182,15 @@ int main(int argc, char *argv[])
             }
         }   
 
-		
+	
 	}
+#endif 
 
-#if 0
-    while(!sys_time_check_and_ack_timer(main_tid)){
+    sprintf(sMessage, "P1 INIT_DONE");
+    SEND_QUEUING_MESSAGE(name_machine, portID[0], sock[0], myCvector.emetteur, sMessage, sizeof(sMessage)); 
+
+#if 1
+    while(1){
         //periodic
         if(sys_time_check_and_ack_timer(main_periodic_tid)){
             imu_periodic();
@@ -184,63 +200,85 @@ int main(int argc, char *argv[])
         imu_event(on_gyro_event, on_accel_event, on_mag_event);
         if(ahrs.status && sys_time_check_and_ack_timer(print_tid)){
 
+
+
+        height = navdata_getHeight();
+        msgID = DRONE_MSG_ALT;
+
+        altReal = (int)height;
+
+        memcpy(sMessage, &msgID, 4);
+        memcpy(sMessage+4, &altReal, 4);
+       // printf("P1 ultrasonic height= %d\n", altReal);
+        SEND_QUEUING_MESSAGE(name_machine, portID[0], sock[0], myCvector.emetteur, sMessage, sizeof(sMessage));
+
+
+        if (droneCMD!=2 && RECEIVE_QUEUING_MESSAGE(sock[0], &rMessage[0]) > 0)
+        {
+            memcpy(&msgID, rMessage[0].m_message, 4);
+            printf("P1 received msgID = %d\n", msgID);
+            switch(msgID)
+            {
+            case DRONE_MSG_ALT:
+                memcpy(&altSetPt, rMessage[0].m_message+4, 4);
+                altSetPt *= 2.56;  /*1cm: 0.01m*2^8=2.56 because of fixed point representation: Q23.8*/
+                break;
+            case DRONE_MSG_CMD:
+                memcpy(&droneCMD, rMessage[0].m_message+4, 4);
+                printf("droneCMD=%d\n", droneCMD);
+                break;
+            default:
+
+                break;
+            }
+        }
+
+        if (droneCMD==1) //takeoff
+        {
+            printf("start takeoff\n");
+            altSetPt = 13<<6;
+            guidance_v_run(true,altSetPt);
+
+            droneCMD = 0;
+        }
+        else if (droneCMD==2) //land
+        {
+            printf("start landing\n");
+            if(ahrs.status && sys_time_check_and_ack_timer(land_tid))
+            {
+                if(height<1)
+                {
+                    stabilization_cmd[0] = 0;
+                    stabilization_cmd[1] = 0;
+                    stabilization_cmd[2] = 0;
+                    stabilization_cmd[3] = 0;
+                }
+                else
+                {
+                    if (altSetPt>3)
+                        altSetPt -= 3;                        
+                    else
+                        altSetPt = 0;
+                    guidance_v_run(true,altSetPt);
+                    
+                }
+                
+            }            
+        }
+        else
+            ;
+
+
             stabilization_attitude_run(true);
-            //guidance_v_run(true,altitude);
-
-			//fixed point representation: Q23.8;  So 1<<7 is 0.5m
-				//guidance_v_run(true,6<<7);  // 3m
-            if(t==0)
-            {
-				guidance_v_run(true,13<<6); // 1<<6 is 0.25m, 13*0.25 = 3.25m
-            }
-            else if(t == 20*500) //20 seconds
-            {
-                guidance_v_run(true, 6<<6);
-            }
-            else if(t==40*500) // 40 seconds
-            {
-                 guidance_v_run(true,0);
-            }
-            else
-                ;
-
-            t++;
-
 
             commands[0]=stabilization_cmd[0];
             commands[1]=stabilization_cmd[1];
             commands[2]=stabilization_cmd[2];
             commands[3]=stabilization_cmd[3];
             //printf("%ld\n",stateGetAccelNed_i()->z);
-            actuators_set(commands);
-            actuators_commit();
-        }
-        if(ahrs.status && sys_time_check_and_ack_timer(land_tid)){
-            /*if(!fin){
-                altitude +=512;
-                if(altitude >= 5000){
-                    fin = 1;
-                }
-            }else{
-                altitude -=512;
-            }
-            printf("poussée est de %d\n",altitude);*/
-
-            if (RECEIVE_QUEUING_MESSAGE(sock, &rMessage) > 0) {
-
-                sscanf(rMessage.m_message,"%s", messageReceived); // message received from P2
-                printf("Consigne reçu : %s", messageReceived);
-                altitude += atoi(messageReceived); //altitude =altitude+&messageReceibed
-                // STRING TO INTEGER
-
-            } else printf("No new message from P2");
-
-            if(altitude >= ALTITUDE_MAX){
-                altitude = ALTITUDE_MAX;
-            }
-
-            printf("Altitude : %d\n",altitude);
-        }
+           // actuators_set(commands);
+           // actuators_commit();
+        }        
 
     }
 
