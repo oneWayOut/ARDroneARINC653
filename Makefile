@@ -1,9 +1,7 @@
 ####################################
 # ARINC653-simulator head Makefile #
 ####################################
-# CC 		:= arm-none-linux-gnueabi-g++
-# INCLUDE_DIR	:= $(shell pwd)/include/libApexArinc653 #$(shell pwd)/include/libApexArinc653Jni
-# CC_FLAGS_ALL	:= -fPIC -Wall -pedantic
+#CC 	:= arm-none-linux-gnueabi-g++
 CC 		:= g++
 INCLUDE_DIR	:= $(shell pwd)/include/libApexArinc653 #$(shell pwd)/include/libApexArinc653Jni
 CC_FLAGS_ALL	:= -fPIC -Wall -pedantic

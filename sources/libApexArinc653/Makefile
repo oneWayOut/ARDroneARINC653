@@ -4,9 +4,9 @@
 
 #CC 		:= arm-none-linux-gnueabi-g++
 CC 	:= g++
-
-#CFLAGS= -fPIC -Wall #-fPIC -W -Wall -ansi -pedantic
 CFLAGS= -fPIC -Wall -pedantic
+#CFLAGS= -fPIC -Wall -pedantic -ggdb
+
 LDFLAGS=
 INCLUDE_DIR	:= ../../include/libApexArinc653
 BUILD_DIR	:=	
@@ -43,5 +43,3 @@ mrproper: clean
 info : 
 	@echo Exec [$(EXEC)]
 	@echo Objects [$(OBJ)]
-
-

@@ -28,7 +28,7 @@ d		:= $(dir)
 #include	$(dir)/rules.mk
 
 dir	:= $(d)/Queueing
-#include	$(dir)/rules.mk
+include	$(dir)/rules.mk
 
 #dir	:= $(d)/TestCai
 #include	$(dir)/rules.mk

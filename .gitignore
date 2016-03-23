@@ -13,7 +13,6 @@ lib/
 *.files
 *.includes
 
-
 # Compiled Object files
 *.slo
 *.lo
