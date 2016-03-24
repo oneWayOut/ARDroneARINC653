@@ -42,7 +42,7 @@
 #define messageSize 256
 #define ALTITUDE_MAX (1<<8)
 
-#define TESTINLINUX 1
+#define TESTINLINUX 0
 
 static inline void on_accel_event( void ) {
     ImuScaleAccel(imu);
@@ -123,7 +123,7 @@ int main(int argc, char *argv[])
     main_tid = sys_time_register_timer(60,NULL);
     main_periodic_tid = sys_time_register_timer((1./PERIODIC_FREQUENCY),NULL);
     print_tid = sys_time_register_timer((1./500.),NULL);
-    land_tid = sys_time_register_timer(1./25.,NULL);
+    land_tid = sys_time_register_timer(1./15.,NULL);
 
 
     printf("Update imu\n");
@@ -215,7 +215,7 @@ int main(int argc, char *argv[])
             if (droneCMD==1) //takeoff
             {
                 printf("start takeoff\n");
-                altSetPt = 13<<6;
+                altSetPt = 12.5*(1<<6);
                 #if !TESTINLINUX
                 guidance_v_run(true,altSetPt);
                 #endif
@@ -259,8 +259,8 @@ int main(int argc, char *argv[])
             commands[2]=stabilization_cmd[2];
             commands[3]=stabilization_cmd[3];
             //printf("%ld\n",stateGetAccelNed_i()->z);
-           // actuators_set(commands);
-           // actuators_commit();
+            actuators_set(commands);
+            actuators_commit();
         }        
 
     }

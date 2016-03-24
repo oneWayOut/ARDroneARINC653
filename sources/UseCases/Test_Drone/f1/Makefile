@@ -1,10 +1,10 @@
-# CC=arm-none-linux-gnueabi-g++
-# LS=$(CC)
-# CFLAGS= -march=armv7-a -lm
-
-CC 	:= g++
+CC=arm-none-linux-gnueabi-g++
 LS=$(CC)
-CFLAGS= -fPIC -Wall -pedantic
+CFLAGS= -march=armv7-a -lm
+
+# CC 	:= g++
+# LS=$(CC)
+# CFLAGS= -fPIC -Wall -pedantic
 
 EXE = communication_test_P1 \
 	  clean
@@ -47,6 +47,7 @@ communication_test_P1: 	communication_test_P1.o 			    					\
 #			CBasefunction.o
 
 	$(CC) $(CFLAGS) -o $@.out $^
+	cp -f communication_test_P1.out ../../../../binary/UseCases/Test_Drone/f1.out
 
 
 .PHONY: depend clean realclean all tests

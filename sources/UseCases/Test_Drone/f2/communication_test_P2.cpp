@@ -98,13 +98,12 @@ int main(int argc, char *argv[])
 
     for (i=0; i<400 ; i++) { 
         if(RECEIVE_QUEUING_MESSAGE(sock, &rMessage)>0)
-        {
-            memcpy(&msgID, rMessage.m_message, 4);
-            printf("P2 received msg ID=%d\n", msgID);
-
+        {            
             //TEST
+            memcpy(&msgID, rMessage.m_message, 4);
             memcpy(&msgCont, rMessage.m_message+4, 4);
-            printf("P2 received height= %d cm\n", (int)msgCont);
+            printf("P2 received msg ID=%d; msgCont=%d\n", msgID, (int)msgCont);         
+
             switch(msgID)
             {
             case DRONE_MSG_ALT:
@@ -125,7 +124,9 @@ int main(int argc, char *argv[])
     memcpy(sMessage,&msgID, 4);
     memcpy(sMessage+4, &msgCont, 4);
     SEND_QUEUING_MESSAGE(name_machine, portID, sock, myCvector.emetteur, sMessage, sizeof(sMessage));
-    sleep(3);
+
+    while(1)
+        sleep(10);
 
 
 

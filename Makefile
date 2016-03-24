@@ -1,8 +1,8 @@
 ####################################
 # ARINC653-simulator head Makefile #
 ####################################
-#CC 	:= arm-none-linux-gnueabi-g++
-CC 		:= g++
+CC 	:= arm-none-linux-gnueabi-g++
+#CC 		:= g++
 INCLUDE_DIR	:= $(shell pwd)/include/libApexArinc653 #$(shell pwd)/include/libApexArinc653Jni
 CC_FLAGS_ALL	:= -fPIC -Wall -pedantic
 LIBS		:= -lpthread -L$(shell pwd)/lib/ -lApexArinc653 -Wl,-rpath ./
@@ -21,7 +21,9 @@ define SRC_2_SYM
     $(foreach src,$(1),$(patsubst sources/%.sym,binary/%,$(src)))
 endef
 
-all: lib targets 
+all: lib targets	
+#	cp -f ./lib/libApexArinc653.so  ./binary/UseCases/Test_Drone/libApexArinc653.so
+#	cp -f ./binary/UseCases/Test_Drone/f2/f2.out ./binary/UseCases/Test_Drone/f2.out
 
 build/%.o: sources/%.cpp
 	@echo "  [CC]    $< -> $@"
@@ -52,6 +54,7 @@ targets: link $(patsubst sources/%, binary/%, $(TARGETS)) symlinks
 
 clean:
 	@rm -f $(TARGETS) $(OBJECTS)
+#	@rm */*.so
 
 mrproper :
 	@rm -f $(TARGETS) $(OBJECTS)

@@ -1,5 +1,14 @@
 Change Log:
-2016.3.21
+#2016.3.24
+takeoffTestGood commit
+altSetPt = 12.5*(1<<6);   a bit high
+altSetPt = 12*(1<<6);  too low
+Todo:
+Control the altitude for takeoff using ultrasound sensor
+Control altitude with commands
+maybe change control methods 
+
+#2016.3.21
 test hold position
 
 
