@@ -1,0 +1,702 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"msg",
+				"msgIndex"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "generated/flight_plan.h",
+			"settings":
+			{
+				"buffer_size": 14974,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 292.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 153.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft"
+	],
+	"file_history":
+	[
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/navigation.c",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/generated/airframe.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/generated/flight_plan.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/boards/ardrone/navdata.c",
+		"/media/cai/work/ITP_ARINC653/2log2016.3.26",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f2/communication_test_P2.cpp",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/main.c",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/Com_AR653Msg.c",
+		"/media/cai/work/ITP_ARINC653/1log2016.3.26",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/binary/UseCases/DronePartitions/Configuration/Config.txt",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/binary/UseCases/DronePartitions/Configuration/Communication.txt",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/Com_AR653Msg.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/libApexArinc653/Makefile",
+		"/media/cai/work/ITP_ARINC653/paparazzi/sw/airborne/firmwares/rotorcraft/autopilot.c",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/autopilot.c",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/navigation.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/subsystems/navigation/common_flight_plan.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/Makefile",
+		"/media/cai/work/ITP_ARINC653/paparazzi/sw/airborne/firmwares/rotorcraft/main.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/NewMakefile(withCPP).mk",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/Makefile",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/link_mcu.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/Configuration/Config.txt",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/Configuration/Communication.txt",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/rules.mk",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/rules.mk",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/firmwares/rotorcraft/main.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/NewMakefile.mk",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/ahrs.h",
+		"/media/cai/work/ITP_ARINC653/paparazzi/conf/boards/ardrone2.makefile",
+		"/media/cai/work/ITP_ARINC653/paparazzi/conf/firmwares/rotorcraft.makefile",
+		"/media/cai/work/ITP_ARINC653/paparazzi/conf/firmwares/subsystems/fixedwing/autopilot.makefile",
+		"/media/cai/work/ITP_ARINC653/paparazzi/conf/firmwares/subsystems/shared/imu_ardrone2.makefile",
+		"/media/cai/work/ITP_ARINC653/paparazzi/conf/firmwares/setup.makefile",
+		"/media/cai/work/ITP_ARINC653/paparazzi/conf/Makefile.bbb",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/Makefile",
+		"/media/cai/work/ITP_ARINC653/paparazzi/conf/Makefile.ardrone2",
+		"/media/cai/work/ITP_ARINC653/paparazzi/conf/Makefile.arm-linux",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/Test_Drone/f1/Makefile",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/arch/linux/mcu_periph/sys_time_arch.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/mcu_periph/sys_time.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/mcu.c",
+		"/media/cai/work/ITP_ARINC653/paparazzi/Makefile.ac",
+		"/media/cai/work/ITP_ARINC653/paparazzi/sw/airborne/Makefile",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/Queueing/f1/function1.cpp",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/Queueing/f2/function2.cpp",
+		"/media/cai/work/Coding/ArDroneARINC653/binary/UseCases/Test_Drone/Configuration/Communication.txt",
+		"/media/cai/work/Coding/ArDroneARINC653/binary/UseCases/Test_Drone/Configuration/Config.txt",
+		"/media/cai/work/Coding/ArDroneARINC653/sources/UseCases/Test_Drone/f1/Makefile",
+		"/media/cai/work/Coding/ArDroneARINC653/Makefile",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/Queueing/Configuration/Config.txt",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/Queueing/Configuration/Communication.txt",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/Test_Drone/f2/rules.mk",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/Test_Drone/f2/communication_test_P2.cpp",
+		"/media/cai/work/test/Makefile",
+		"/media/cai/work/test/sources/UseCases/Test_Drone/f3/communication_test_P3.cpp",
+		"/media/cai/work/test/sources/UseCases/Test_Drone/f2/rules.mk",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/firmwares/rotorcraft/autopilot.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/generated/settings.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/navigation/common_flight_plan.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/firmwares/rotorcraft/navigation.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/firmwares/rotorcraft/navigation.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/generated/flight_plan.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITP_changeLog",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/boards/ardrone/navdata.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/boards/ardrone/navdata.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/firmwares/rotorcraft/guidance/guidance_h.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/arch/linux/mcu_periph/sys_time_arch.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/mcu_periph/sys_time.h",
+		"/media/cai/work/test/sources/UseCases/Test_Drone/rules.mk",
+		"/home/cai/Dropbox/ARINC653_Drone/3PartitionsTestFiles/Config.txt",
+		"/home/cai/Dropbox/ARINC653_Drone/3PartitionsTestFiles/Communication.txt",
+		"/media/cai/work/ITP_ARINC653/paparazzi/sw/airborne/boards/ardrone/navdata.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/firmwares/rotorcraft/guidance/guidance_v_CAI.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/include/std.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/generated/airframe.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/firmwares/rotorcraft/autopilot.h",
+		"/media/cai/work/ITP_ARINC653/paparazzi/sw/airborne/subsystems/ins/ins_int.c",
+		"/media/cai/work/ITP_ARINC653/paparazzi/var/aircrafts/ardrone2/Makefile.ac",
+		"/media/cai/work/ITP_ARINC653/paparazzi/sw/airborne/subsystems/ins.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/generated/modules.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/varinclude/pprzlink/messages.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/ahrs/ahrs_int_cmpl_quat_wrapper.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/firmwares/rotorcraft/stabilization/stabilization_rate.h",
+		"/media/cai/work/ITP_ARINC653/paparazzi/sw/airborne/firmwares/rotorcraft/stabilization/stabilization_rate_indi.c",
+		"/media/cai/work/ITP_ARINC653/paparazzi/sw/airborne/firmwares/rotorcraft/stabilization/stabilization_rate.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/modules/geo_mag/geo_mag.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/intermcu.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/gps.h",
+		"/media/cai/work/ITP_ARINC653/paparazzi/sw/airborne/modules/ins/ins_xsens.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/modules/geo_mag/geo_mag.h",
+		"/media/cai/work/ITP_ARINC653/paparazzi/conf/firmwares/subsystems/rotorcraft/ins_extended.makefile",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/ins/vf_float.h",
+		"/media/cai/work/ITP_ARINC653/paparazzi/conf/Makefile.linux",
+		"/media/cai/work/ITP_ARINC653/compilePPZrecord.md",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/mcu_periph/uart.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/varinclude/pprzlink/pprz_transport.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/datalink/datalink.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/imu.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/imu.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/imu/imu_ardrone2.h",
+		"/media/cai/work/ITP_ARINC653/paparazzi/sw/airborne/arch/linux/mcu_periph/uart_arch.c",
+		"/media/cai/work/Coding/testProg/makeFileTest/hellofunc.cpp",
+		"/media/cai/work/Coding/testProg/makeFileTest/Makefile",
+		"/media/cai/work/ITP_ARINC653/paparazzi/conf/firmwares/subsystems/shared/ahrs_int_cmpl_quat.makefile",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/boards/ardrone/actuators.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/boards/ardrone/actuators.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/boards/ardrone2.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/actuators/actuators_default.h",
+		"/media/cai/work/Coding/testProg/makeFileTest/hellomake.cpp",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/gps/gps_sirf.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/gps/gps_sirf.c",
+		"/media/cai/work/ITP_ARINC653/paparazzi/conf/firmwares/subsystems/rotorcraft/gps_sirf.makefile",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/datalink/telemetry.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/datalink/downlink.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/datalink/downlink.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/ppz_ITPV2.files",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/varinclude/pprzlink/dl_protocol.h",
+		"/media/cai/work/ITP_ARINC653/paparazzi/conf/firmwares/subsystems/rotorcraft/gps_ardrone2.makefile",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/arch/linux/mcu_periph/i2c_arch.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/mcu_periph/i2c.c",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/mcu_periph/i2c.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/state.h",
+		"/media/cai/work/ITP_ARINC653/paparazzi/conf/Makefile.arm-linux-toolchain",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/navigation/waypoints.h",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/navigation/waypoints.c",
+		"/media/cai/work/ITP_ARINC653/paparazzi/Makefile",
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/math/pprz_algebra.h"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/Test_Drone/f1",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"/media/cai/work/ITP_ARINC653/PPZ_ITP/CDCgenerated",
+			"",
+			"/media/cai/work/Version5_CanCompile/sources/UseCases/Test_Drone/f1",
+			"",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"",
+			"*.c",
+			"*.h",
+			"",
+			"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/Test_Drone/f1",
+			"/media/cai/work/ITP_ARINC653/paparazzi",
+			"/media/cai/work/googleDrive/ITP_ARINC653/paparazzi",
+			"/media/cai/work/googleDrive/ITP_ARINC653/ARDrone_RISLER/ARDrone_RISLER",
+			"/media/cai/work/Coding/Firmware"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"startbyte not found",
+			"nav_climb_vspeed",
+			"autopilot_set_mode",
+			"autopilot_mode",
+			"CC",
+			"OBJDIR",
+			"LD",
+			"USE_MAGNETOMETER",
+			"USE_AHRS",
+			"AHRS",
+			"USE_AHRS_ALIGNER",
+			"AHRS_PROPAGATE_FREQUENCY",
+			"LDFLAGS",
+			"clock_gettime",
+			"GLIB",
+			"LDFLAGS",
+			"CINCS",
+			"SIZE",
+			"USER_CFLAGS",
+			"GDB",
+			"LD",
+			"CP",
+			"AR",
+			"ARCH_CFLAGS",
+			"AR",
+			"LDFLAGS",
+			"CFLAGS",
+			"CC",
+			"HARD_FLOAT",
+			"PERIPHERALS_AUTO_INIT",
+			"mcu_init",
+			"sys_time_init",
+			"sys_time_arch_init",
+			"clock_gettime",
+			"2.17",
+			"GLIBC_2.17",
+			"GLIBC_2.",
+			"2.7",
+			"GLIBC_",
+			"GLIBC_2.17",
+			"EXE",
+			"navdata_measure_t",
+			"navdata_height",
+			"guidance_h_mode_changed",
+			"guidance_h.mode",
+			"nav_pitch",
+			"guidance_h",
+			"autopilot_in_flight",
+			"FAILSAFE_GROUND_DETECT",
+			"autopilot_in_flight",
+			"MODE_STARTUP",
+			"autopilot_set_mode",
+			"autopilot_mode",
+			"nav_altitude = POS_BFP_OF_REAL(_alt);",
+			"nav_periodic_task",
+			"NAV_FREQ",
+			"nav_periodic_task",
+			"auto_nav",
+			"MODE_STARTUP",
+			"autopilot_mode",
+			"main*.c",
+			"gps*.h",
+			"xsens_periodic",
+			"InsPeriodic",
+			"AHRS_PROPAGATE_FREQUENCY",
+			"USE_BARO_BOARD",
+			"stabilization_rate_init",
+			"USE_",
+			"geo_mag",
+			"DefaultInsImpl",
+			"USE_SONAR",
+			"USE_VFF_EXTENDED",
+			"geo_mag",
+			"geo_mag.h",
+			"modules_init",
+			"geo_mag_periodic",
+			"geo_mag_init",
+			"LIBS",
+			"ld",
+			"LDFLAGS",
+			"pthread",
+			"sys_time_init",
+			"sys_time_arch_init",
+			"pthread_create",
+			"DEFAULT_ACTUATORS",
+			"actuators.h",
+			"actuators_pwm_values",
+			"USE_AHRS_ALIGNER",
+			"PRIMARY_AHRS",
+			"gps",
+			"USE_GPS",
+			"UART",
+			"USE_",
+			"USE",
+			"drone",
+			"USE_UART",
+			"GPS_PORT",
+			"gps",
+			"SIRF_GPS_LINK",
+			"IMU_TYPE_H",
+			"imu_ardrone2.h",
+			"IMU_GYRO_P_SENS_NUM",
+			"firmware_parse_msg",
+			"teleme",
+			"telemetry",
+			"pprz_telemetry",
+			"pprz_transport_init",
+			"pprz_check_and_parse",
+			"downlink.h",
+			"pprz_transport.h",
+			"DL_PING",
+			"DOWNLINK_DEVICE",
+			"link",
+			"downlink_init",
+			"GPS_TYPE_H",
+			"cc ap",
+			"CC /media/cai/work/ITP_ARINC653/paparazzi/var/aircrafts/ardrone2/ap",
+			"i2c_transceive",
+			"i2c_receive",
+			"i2c_transmit",
+			"i2c_submit",
+			"i2c?_init",
+			"i2*1_init",
+			"i2?1_init",
+			"i2c_transceive",
+			"i2c_receive",
+			"i2c_transmit",
+			"i2c_submit"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "generated/flight_plan.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14974,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5464,
+								5464
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 594.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.632084851407,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 142.0
+	},
+	"pinned_build_system": "",
+	"project": "paparazzi.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"flig",
+				"generated/flight_plan.h"
+			],
+			[
+				"main",
+				"firmwares/rotorcraft/main.c"
+			],
+			[
+				"fli",
+				"generated/flight_plan.h"
+			],
+			[
+				"fl",
+				"generated/flight_plan.h"
+			],
+			[
+				"flight",
+				"generated/flight_plan.h"
+			],
+			[
+				"",
+				"link_mcu.h"
+			],
+			[
+				"commsg",
+				"firmwares/rotorcraft/Com_AR653Msg.c"
+			],
+			[
+				"auto",
+				"firmwares/rotorcraft/autopilot.c"
+			],
+			[
+				"na",
+				"boards/ardrone/navdata.c"
+			],
+			[
+				"nav",
+				"boards/ardrone/navdata.h"
+			],
+			[
+				"cai",
+				"firmwares/rotorcraft/guidance/guidance_v_CAI.c"
+			],
+			[
+				"geom",
+				"modules/geo_mag/geo_mag.c"
+			],
+			[
+				"air",
+				"generated/airframe.h"
+			],
+			[
+				"gps_sir",
+				"subsystems/gps/gps_sirf.h"
+			],
+			[
+				"uart",
+				"mcu_periph/uart.h"
+			],
+			[
+				"gps",
+				"subsystems/gps/gps_sirf.c"
+			],
+			[
+				"uart.h",
+				"mcu_periph/uart.h"
+			],
+			[
+				"imu",
+				"subsystems/imu.c"
+			],
+			[
+				"imu.",
+				"subsystems/imu.h"
+			],
+			[
+				"tele",
+				"subsystems/datalink/telemetry.h"
+			],
+			[
+				"protoc",
+				"varinclude/pprzlink/dl_protocol.h"
+			],
+			[
+				"down",
+				"subsystems/datalink/downlink.h"
+			],
+			[
+				"gps.h",
+				"subsystems/gps.h"
+			],
+			[
+				"i2c_a",
+				"arch/linux/mcu_periph/i2c_arch.c"
+			],
+			[
+				"aut",
+				"firmwares/rotorcraft/autopilot.h"
+			],
+			[
+				"set",
+				"generated/settings.h"
+			],
+			[
+				"make",
+				"Makefile"
+			],
+			[
+				"airf",
+				"generated/airframe.h"
+			],
+			[
+				"acuator",
+				"subsystems/actuators/actuators_default.h"
+			],
+			[
+				"navigation",
+				"sw/airborne/firmwares/rotorcraft/navigation.c"
+			],
+			[
+				"navi",
+				"sw/airborne/firmwares/rotorcraft/navigation.c"
+			],
+			[
+				"autop",
+				"sw/airborne/firmwares/rotorcraft/autopilot.h"
+			],
+			[
+				"fligh",
+				"CDCgenerated/flight_plan.h"
+			],
+			[
+				"paparazzi.h",
+				"sw/airborne/paparazzi.h"
+			],
+			[
+				"comman",
+				"sw/airborne/subsystems/commands.h"
+			],
+			[
+				"downlink",
+				"sw/airborne/subsystems/datalink/downlink.h"
+			],
+			[
+				"settings.h",
+				"sw/airborne/subsystems/settings.h"
+			],
+			[
+				"main.c",
+				"sw/airborne/firmwares/rotorcraft/main.c"
+			],
+			[
+				"guid_v.c",
+				"sw/airborne/firmwares/rotorcraft/guidance/guidance_v.c"
+			],
+			[
+				"guidan_v.",
+				"sw/airborne/firmwares/rotorcraft/guidance/guidance_v.h"
+			],
+			[
+				"nav.h",
+				"sw/airborne/firmwares/fixedwing/nav.h"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 720.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 61.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

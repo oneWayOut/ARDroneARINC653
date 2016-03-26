@@ -4,19 +4,19 @@
 
 CC 		:= arm-linux-gnueabi-g++
 #CC 	:= g++
-
-#CFLAGS= -fPIC -Wall #-fPIC -W -Wall -ansi -pedantic
 CFLAGS= -fPIC -Wall -pedantic
+#CFLAGS= -fPIC -Wall -pedantic -ggdb
+
 LDFLAGS=
 INCLUDE_DIR	:= ../../include/libApexArinc653
-BUILD_DIR	:=	
+BUILD_DIR	:=
 
 EXEC=libApexArinc653.so
 SRC= $(wildcard *.c)
 OBJ= $(SRC:%.c=../../build/libApexArinc653/%.o)
 
 all: lib
-	
+
 lib : $(EXEC)
 
 libApexArinc653.so: $(OBJ)
@@ -30,7 +30,7 @@ libApexArinc653.so: $(OBJ)
 	@echo "  [CC]    $< -> $@"
 	@echo  $@ -c $< $(CFLAGS) -I$(INCLUDE_DIR)
 	@mkdir -p ../../build/libApexArinc653
-	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDE_DIR) 	
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDE_DIR)
 
 
 clean:
@@ -40,8 +40,6 @@ mrproper: clean
 	@rm -rf $(EXEC)
 
 
-info : 
+info :
 	@echo Exec [$(EXEC)]
 	@echo Objects [$(OBJ)]
-
-

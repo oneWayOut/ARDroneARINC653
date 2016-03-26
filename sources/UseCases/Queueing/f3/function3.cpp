@@ -1,5 +1,8 @@
 #include "CBasefunction.h"
 #include <iostream>
 int main(int argc, char *argv[]) {
-    return 0;
+    while(1)
+    {
+    	sleep(1);
+    }
 }

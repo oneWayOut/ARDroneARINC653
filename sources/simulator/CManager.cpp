@@ -24,7 +24,7 @@ struct sigaction m_action;
 /**
  * \brief {CManager main class of the ARINC 653 emulator, it manage the whole partition creation and scheduling
  * it makes the initialization of arguments}
- * \ 
+ * \
  * \ The 2 following path are hardcoded, that's why the make file creates automaticaly symlinks
  */
 
@@ -98,7 +98,7 @@ void CManager::init_process() {
 }
 
 /**
- * 
+ *
  */
 void * CManager::f_thread_watchdogM(void * args) {
     struct arguments_f_thread_watchdogM *argt = (arguments_f_thread_watchdogM*) args;
@@ -402,13 +402,19 @@ void CManager::create_part() {
             pid_intermediaire = 0;
             g = 0;
         }
+
+        /*ATTTENTION, this is only for the Drone Control Partition*/
+        //for (unsigned int i = 0; i < m_vpart.size(); i++) {
         for (unsigned int i = 0; i < m_vpart.size(); i++) {
 //            std::cout << " **ACTIVATION PARTITION " << i + 1 << std::endl;
+
             kill(part_pid[i], SIGCONT); //réveille partition i
+
+            if(i!=0) {
             usleep(vtimeTable[i]); //budget temps p1 // ordonnanceur s'endort
 //            std::cout << " **ARRET PARTITION" << i + 1 << std::endl;
             kill(part_pid[i], SIGSTOP); // suspend la partition i
-
+            }
         }
     }
 

@@ -1,10 +1,27 @@
-Change Log:
+#Change Log:
 
-2016.3.17
+##2016.3.26
+use paparazzi code as partition 1;
+change makefile
+
+##2016.3.24
+takeoffTestGood commit
+altSetPt = 12.5*(1<<6);   a bit high
+altSetPt = 12*(1<<6);  too low
+Todo:
+Control the altitude for takeoff using ultrasound sensor
+Control altitude with commands
+maybe change control methods 
+
+##2016.3.21
+test hold position
+
+
+##2016.3.17
 add Usecase Test_Drone
 
 
-2016.3.16
+##2016.3.16
 fix the undefined symbol problem, the use case queueing communication can work in the drone now.
 
 
