@@ -33,7 +33,7 @@ include	$(dir)/rules.mk
 #dir	:= $(d)/TestCai
 #include	$(dir)/rules.mk
 
-dir	:= $(d)/Test_Drone
+dir	:= $(d)/DronePartitions
 include	$(dir)/rules.mk
 
 

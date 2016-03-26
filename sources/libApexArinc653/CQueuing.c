@@ -72,12 +72,13 @@ int SEND_QUEUING_MESSAGE(char *name, int portId, int sock, char *emetteur, char 
 
     const char *str1 = message; //convert char to const char
     Type_Message myMessage;
-	if(msgSize>MSG_LENGTH)
+	if(msgSize>=MSG_LENGTH)
 	{
 		perror("msg too long.");
         return (-1);
 	}
 	memcpy(myMessage.m_message, str1, msgSize);
+	myMessage.m_message[msgSize] = '\0';
     myMessage.m_length = msgSize;
     const char *str2 = emetteur;
     strcpy(myMessage.m_sender, str2);
