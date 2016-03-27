@@ -49,7 +49,7 @@ CFLAGS += $(CSTANDARD)
 #LDFLAGS	+= $($(TARGET).LDFLAGS) -lm -pthread
 LDFLAGS	+=  -lm -pthread
 
-#cdc defined flags
+#cai defined flags
 BOARD_CFG=\"boards/ardrone2.h\"
 ## include dir
 CFLAGS += -I./ -I./arch/linux -I./include -I./varinclude -I./modules \

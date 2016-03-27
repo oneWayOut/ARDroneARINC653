@@ -43,7 +43,7 @@
 #include <termios.h> /* POSIX terminal control definitions */
 #include <stdint.h>
 
-//cdc global
+//cai global
 uint16_t actuators_pwm_values[ACTUATORS_ARDRONE_NB];
 
 /**

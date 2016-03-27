@@ -30,7 +30,7 @@
 
 #define ABI_C
 
-//cdc change
+//cai change
 #define USE_MOTOR_MIXING 1
 
 #include <inttypes.h>
@@ -135,6 +135,7 @@ int main(int argc, char *argv[])
   msg653ComInit(argc, argv);
 #endif
 
+
 #if LIMIT_EVENT_POLLING
   /* Limit main loop frequency to 1kHz.
    * This is a kludge until we can better leverage threads and have real events.
@@ -187,7 +188,7 @@ STATIC_INLINE void main_init(void)
   motor_mixing_init();
 #endif
 
-//cdc maybe delete
+//cai maybe delete
   radio_control_init();
 
 
@@ -277,7 +278,7 @@ STATIC_INLINE void main_periodic(void)
 #endif
 
 
-//cdc todo remove
+//cai todo remove
   //FIXME: temporary hack, remove me
 #ifdef InsPeriodic
   InsPeriodic();

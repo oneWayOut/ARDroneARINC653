@@ -29,7 +29,7 @@
 
 #include "firmwares/rotorcraft/stabilization.h"
 #include "math/pprz_algebra_int.h"
- //cdc change
+ //cai change
 //#include STABILIZATION_ATTITUDE_TYPE_H
 #include "stabilization_attitude_quat_int.h"
 

@@ -65,7 +65,7 @@
 
 #include "pprz_version.h"
 
-//cdc change
+//cai change
 #define USE_MOTOR_MIXING 1
 
 uint8_t  autopilot_mode;
@@ -162,7 +162,7 @@ PRINT_CONFIG_MSG("Enabled UNLOCKED_HOME_MODE since MODE_AUTO2 is AP_MODE_HOME")
 #endif
 
 
-#if 0    //cdc change
+#if 0    //cai change
 void send_autopilot_version(struct transport_tx *trans, struct link_device *dev)
 {
   static uint32_t ap_version = PPRZ_VERSION_INT;
@@ -324,9 +324,9 @@ void autopilot_init(void)
   /* set startup mode, propagates through to guidance h/v */
   autopilot_set_mode(MODE_STARTUP);
 
-  //cdc add
+  //cai add
   autopilot_set_mode(AP_MODE_NAV);
-#if 0  //cdc change
+#if 0  //cai change
   register_periodic_telemetry(DefaultPeriodic, PPRZ_MSG_ID_AUTOPILOT_VERSION, send_autopilot_version);
   register_periodic_telemetry(DefaultPeriodic, PPRZ_MSG_ID_ALIVE, send_alive);
   register_periodic_telemetry(DefaultPeriodic, PPRZ_MSG_ID_ROTORCRAFT_STATUS, send_status);

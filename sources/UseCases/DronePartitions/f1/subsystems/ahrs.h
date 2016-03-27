@@ -41,7 +41,7 @@
 #define AHRS_COMP_ID_GX3     9
 #define AHRS_COMP_ID_CHIMU   10
 
-//cdc change
+//cai change
 //#define AHRS_ALIGNER_LED
 #define PRIMARY_AHRS ahrs_icq
 #include "subsystems/ahrs/ahrs_int_cmpl_quat_wrapper.h"

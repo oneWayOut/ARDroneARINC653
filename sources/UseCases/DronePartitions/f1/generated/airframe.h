@@ -20,7 +20,7 @@
 #define SERVOS_DEFAULT_NB 4
 #include "subsystems/actuators/actuators_default.h"
 
-//cdc add
+//cai add
 //#include  "subsystems/actuators/motor_mixing.h"
 
 #define SERVO_TOP_LEFT 0

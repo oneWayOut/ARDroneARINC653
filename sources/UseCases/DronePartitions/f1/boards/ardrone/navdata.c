@@ -86,15 +86,19 @@ static pthread_cond_t  navdata_cond  = PTHREAD_COND_INITIALIZER;
 
 
 
-//cdc add
-int16_t previousUltrasoundHeight = 0;
+/**  cai add
+ * @return  height above ground by ultrasonic sensor
+ *  the unit is centimeter
+ */
 int16_t navdata_height(void) {
-  if (navdata.measure.ultrasound > 10000) {
-    return previousUltrasoundHeight;
-  }
+  static int16_t previousHeight = 0;
+  float sonar_meas;
 
-  previousUltrasoundHeight = (navdata.measure.ultrasound - 880) / 26.553;
-  return previousUltrasoundHeight;
+  //have new data
+  if (navdata.measure.ultrasound >> 15) {
+    previousHeight = (int16_t)(((navdata.measure.ultrasound & 0x7FFF) - SONAR_OFFSET) * SONAR_SCALE *100.0);
+  }
+  return previousHeight;
 }
 
 /**

@@ -28,7 +28,7 @@
 #include "paparazzi.h"
 
 /* underlying hardware, also include if RADIO_CONTROL is not defined for ap in dual mcu case */
-//cdc change #include RADIO_CONTROL_TYPE_H
+//cai change #include RADIO_CONTROL_TYPE_H
 #include "radio_control/rc_datalink.h"
 
 /* RADIO_CONTROL_NB_CHANNEL needs to be defined to suitable default the implementation.

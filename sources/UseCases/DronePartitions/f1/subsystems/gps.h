@@ -131,8 +131,8 @@ extern void GpsEvent(void);
  */
 extern void gps_register_impl(ImplGpsInit init, ImplGpsEvent event, uint8_t id);
 
-#include "subsystems/gps/gps_sirf.h"   //cdc add
-/* cdc change
+#include "subsystems/gps/gps_sirf.h"   //cai add
+/* cai change
 #ifdef GPS_TYPE_H
 #include GPS_TYPE_H
 #endif

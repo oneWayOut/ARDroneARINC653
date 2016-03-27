@@ -7,6 +7,11 @@ from this repository: https://github.com/oneWayOut/ArDronePPZ
 2 implement better communication 
 
 ##ChangeLog
+###2016.3.27
+change makefile;
+add communication feature, but need to change the macro in Com_AR653Msg.h;
+change flight_plan.h to make a takeoff and land flight plan.
+
 ###2016.3.26
 change makefile to fix the GLIBC_2.17 not found error
 can fly now

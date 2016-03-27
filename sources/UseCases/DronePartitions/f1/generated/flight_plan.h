@@ -30,17 +30,18 @@
 
 //chang the first line from 42.0 to 0
 #define WAYPOINTS_UTM { \
- {0.0, 0.0, 1.0},\
- {0.0, 0.0, 1.0},\
- {0.0, 0.0, 1.0},\
- {-2.0, -2.0, 1.0},\
- {-2.0, -2.0, 1.0},\
- {-2.0, -2.0, 1.0},\
- {-2.0, -2.0, 1.0},\
- {-2.0, -2.0, 1.0},\
- {-2.0, -2.0, 1.0},\
- {-2.0, -2.0, 1.0},\
+ {42.0, 42.0, 152},\
+ {0.0, 0.0, 152},\
+ {-2.0, -2.0, 152},\
+ {-2.0, -2.0, 152},\
+ {-2.0, -2.0, 152},\
+ {-2.0, -2.0, 152},\
+ {-2.0, -2.0, 152},\
+ {-2.0, -2.0, 152},\
+ {-2.0, -2.0, 149.},\
+ {-2.0, -2.0, 152},\
 };
+#if 0
 #define WAYPOINTS_ENU { \
  {41.24, 42.77, 5.00}, /* ENU in meters  */ \
  {0.00, -0.00, 5.00}, /* ENU in meters  */ \
@@ -53,6 +54,21 @@
  {-1.96, -2.04, 2.00}, /* ENU in meters  */ \
  {-1.96, -2.04, 5.00}, /* ENU in meters  */ \
 };
+#endif
+
+#define WAYPOINTS_ENU { \
+ {0.00, 0.00, 1.00}, /* ENU in meters  */ \
+ {0.00, 0.00, 1.00}, /* ENU in meters  */ \
+ {0.00, 0.00, 1.00}, /* ENU in meters  */ \
+ {0.00, 0.00, 1.00}, /* ENU in meters  */ \
+ {0.00, 0.00, 1.00}, /* ENU in meters  */ \
+ {0.00, 0.00, 1.00}, /* ENU in meters  */ \
+ {0.00, 0.00, 1.00}, /* ENU in meters  */ \
+ {0.00, 0.00, 1.00}, /* ENU in meters  */ \
+ {0.00, 0.00, 1.00}, /* ENU in meters  */ \
+ {0.00, 0.00, 1.00}, /* ENU in meters  */ \
+};
+
 #define WAYPOINTS_LLA { \
  {.lat=435645043, .lon=14817909, .alt=152000}, /* 1e7deg, 1e7deg, mm (above NAV_MSL0, local msl=51.85m) */ \
  {.lat=435641194, .lon=14812805, .alt=152000}, /* 1e7deg, 1e7deg, mm (above NAV_MSL0, local msl=51.85m) */ \
@@ -121,73 +137,110 @@
 #ifdef NAV_C
 
 
-
+//cai added the following headers and auto_nav()
+#include <stdio.h>
 #include "mcu_periph/sys_time.h"
 #include "boards/ardrone/navdata.h"
 
 static inline void auto_nav(void)
 {
   static int mystep=0;
+
+  static uint32_t  seconds  = 0;
+
+  //centi meter above ground, use the ultrasonic sensor data
   static int16_t height = 0;
 
   height = navdata_height();
 
-  // pre_call
-  //NavKillThrottle();
-  if(sys_time.nb_sec<10)
+  switch(mystep)
   {
+  case 0:
+    // pre_call
+    //NavKillThrottle();
     autopilot_mode = AP_MODE_NAV;
     autopilot_set_motors_on(FALSE);
     mystep = 1;
-  }
+    printf("step 0 time = %d\n", sys_time.nb_sec);
 
+    break;
+  case 1:
+    //start engine
+    //  NavResurrect()
+    if (sys_time.nb_sec>=10)  //cai todo: do we need this condition?
+    {
+      autopilot_mode = AP_MODE_NAV;
+      autopilot_set_motors_on(TRUE);
 
-  //start engine
-  //  NavResurrect()
-  else if (sys_time.nb_sec>=12 && mystep==1)
-  {
-  autopilot_mode = AP_MODE_NAV;
-  autopilot_set_motors_on(TRUE);
+      nav_pitch = ANGLE_BFP_OF_REAL(0);
 
-  nav_pitch = ANGLE_BFP_OF_REAL(0);
+      horizontal_mode = HORIZONTAL_MODE_ATTITUDE;
+      nav_roll = ANGLE_BFP_OF_REAL(0);
 
-  horizontal_mode = HORIZONTAL_MODE_ATTITUDE;
-  nav_roll = ANGLE_BFP_OF_REAL(0);
+      // Holding point
+      vertical_mode = VERTICAL_MODE_MANUAL;
+      nav_throttle = 9600*(0);
 
-  // Holding point
-  vertical_mode = VERTICAL_MODE_MANUAL;
-  nav_throttle = 9600*(0);
+      //takeoff
+      vertical_mode = VERTICAL_MODE_CLIMB;
+      //nav_climb = SPEED_BFP_OF_REAL(nav_climb_vspeed); //climb_vspeed = 0.5
+      nav_climb = SPEED_BFP_OF_REAL(0.3);  //decrease the climb_vspeed
 
-  //takeoff
-  vertical_mode = VERTICAL_MODE_CLIMB;
-  nav_climb = SPEED_BFP_OF_REAL(nav_climb_vspeed);
+      mystep = 2;
 
-  mystep++;
-  }
+      printf("take off at time = %d\n",sys_time.nb_sec);
+    }
+  case 2:
+    //stay
+    if(height<=110)
+    {
+      vertical_mode = VERTICAL_MODE_ALT;
+      nav_altitude = POS_BFP_OF_REAL(1.1);  //1 meter
+    }
+    else
+    {
+      mystep = 3;
+      printf("begin descend at %d \n", sys_time.nb_sec);
+    }
+    // TODO: maybe we can add some tolerance in this condition so that it can stay for a long time
+    break;
+  case 3:
+    //flare landing
 
-//caiTODO  to be added to the flight plan
-  //stay
-  else if(mystep==2)
-  {
-  vertical_mode = VERTICAL_MODE_ALT;
-  nav_altitude = POS_BFP_OF_REAL(1);  //1 meter
-  }
+      /*
+      nav_pitch = ANGLE_BFP_OF_REAL(0);
 
-  //flare landing
-  else if((sys_time.nb_sec>=80 && mystep==2)||height>=110)
-  {
-    vertical_mode = VERTICAL_MODE_CLIMB;
-    nav_climb = SPEED_BFP_OF_REAL(nav_descend_vspeed);
-    mystep++;
-  }
+      vertical_mode = VERTICAL_MODE_CLIMB;
+      //nav_climb = SPEED_BFP_OF_REAL(nav_descend_vspeed);
+      nav_climb = SPEED_BFP_OF_REAL(-0.3);*/
 
-  //landed
-  else if(mystep==3)
-  {
+      printf("descend height = %dcm, time = %d\n", height, sys_time.nb_sec);
+
+      seconds = sys_time.nb_sec;
+
+      //cai todo
+      NavGotoWaypoint(4);
+      NavVerticalAutoThrottleMode(RadOfDeg(0.000000));
+      NavVerticalClimbMode(nav_descend_vspeed);
+
+      // the height should be a bit higher than expected, otherwise it will go directly to step 4.
+      if (height<=3||height>160)
+      {
+        mystep = 4;
+        printf("turn off at %d\n", sys_time.nb_sec);
+      }
+    break;
+  case 4:
+    //landed  TODO: do we need this? as macro FAILSAFE_GROUND_DETECT is defined
     nav_throttle = 9600*(0);
+    mystep++;
+    printf("flight over, height = %dcm\n", height);
+    break;
+  default:
+    nav_throttle = 9600*(0);
+    printf("default break\n");
+    break;
   }
-  else
-    ;
 }
 
 

@@ -81,7 +81,7 @@ static void send_downlink(struct transport_tx *trans, struct link_device *dev)
 
 void downlink_init(void)
 {
-#if 0  //cdc change
+#if 0  //cai change
   // Set initial counters
   (DefaultDevice).device.nb_ovrn = 0;
   (DefaultDevice).device.nb_bytes = 0;

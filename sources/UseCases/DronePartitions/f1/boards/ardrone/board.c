@@ -34,7 +34,7 @@
 #warning No battery voltage measurement available! Please add <load name="bat_voltage_ardrone2.xml"/> to your modules.
 #endif
 
-//cdc change
+//cai change
 #if 0
 #include "peripherals/video_device.h"
 

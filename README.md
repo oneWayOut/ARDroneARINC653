@@ -1,5 +1,8 @@
 #Change Log:
 
+##2016.3.27
+change DronePartitions usecase to takeoff and land and communicate with other partitions.
+
 ##2016.3.26
 use paparazzi code as partition 1;
 change makefile

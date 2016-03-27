@@ -2,7 +2,7 @@
 #define CONFIG_ARDRONE2
 
 #define BOARD_ARDRONE2
-//cdc change
+//cai change
 //#include "peripherals/video_device.h"
 
 #ifndef UART1_DEV

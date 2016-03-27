@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"ret",
+				"retVal"
+			],
+			[
+				"test",
+				"testValue"
+			],
+			[
 				"msg",
 				"msgIndex"
 			]
@@ -12,11 +20,11 @@
 	"buffers":
 	[
 		{
-			"file": "generated/flight_plan.h",
+			"file": "/media/cai/work/ITP_ARINC653/worknote2016.3.26.cpp",
 			"settings":
 			{
-				"buffer_size": 14974,
-				"line_ending": "Unix"
+				"buffer_size": 1049,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -27,10 +35,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 292.0,
-		"last_filter": "",
+		"height": 138.0,
+		"last_filter": "Package Control: ins",
 		"selected_items":
 		[
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
 			[
 				"Package Control: ",
 				"Package Control: Install Package"
@@ -57,19 +69,51 @@
 	},
 	"expanded_folders":
 	[
-		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1",
-		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares",
-		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft"
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1"
 	],
 	"file_history":
 	[
-		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/navigation.c",
-		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/generated/airframe.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/state.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/guidance/guidance_v.c",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/include/std.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/generated/settings.h",
 		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/generated/flight_plan.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/subsystems/navigation/common_flight_plan.h",
+		"/media/cai/work/ITP_ARINC653/paparazzi/sw/airborne/firmwares/rotorcraft/rotorcraft_datalink.c",
+		"/media/cai/work/ITP_ARINC653/paparazzi/sw/airborne/subsystems/navigation/common_flight_plan.c",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/navigation.h",
+		"/home/cai/Desktop/log2016.3.27.md",
+		"/media/cai/work/ITP_ARINC653/paparazzi/var/aircrafts/ardrone2/ap/generated/flight_plan.h",
+		"/media/cai/work/ITP_ARINC653/paparazzi/sw/airborne/modules/gsm/gsm.c",
+		"/media/cai/work/ITP_ARINC653/paparazzi/var/include/pprzlink/messages.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/subsystems/navigation/waypoints.c",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/guidance/guidance_v_CAI.c",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/navigation.c",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/Makefile",
 		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/boards/ardrone/navdata.c",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/main.c",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/subsystems/radio_control.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/mcu_periph/sys_time.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/varinclude/abi_messages.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/boards/ardrone2.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/boards/ardrone/actuators.c",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/boards/ardrone/board.c",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/autopilot.c",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/stabilization/stabilization_attitude.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/generated/airframe.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/subsystems/ahrs.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/subsystems/gps.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/subsystems/datalink/downlink.c",
+		"/media/cai/work/ITP_ARINC653/worknote2016.3.26.cpp",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/subsystems/navigation/waypoints.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/arch/linux/mcu_periph/i2c_arch.c",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/subsystems/ins/ins_int.c",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/math/pprz_geodetic_int.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/math/pprz_geodetic_float.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/subsystems/abi_common.h",
+		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/partitionPPZ.sublime-workspace",
 		"/media/cai/work/ITP_ARINC653/2log2016.3.26",
 		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f2/communication_test_P2.cpp",
-		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/main.c",
 		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/Com_AR653Msg.c",
 		"/media/cai/work/ITP_ARINC653/1log2016.3.26",
 		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/binary/UseCases/DronePartitions/Configuration/Config.txt",
@@ -77,10 +121,6 @@
 		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/Com_AR653Msg.h",
 		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/libApexArinc653/Makefile",
 		"/media/cai/work/ITP_ARINC653/paparazzi/sw/airborne/firmwares/rotorcraft/autopilot.c",
-		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/autopilot.c",
-		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/firmwares/rotorcraft/navigation.h",
-		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/subsystems/navigation/common_flight_plan.h",
-		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/sources/UseCases/DronePartitions/f1/Makefile",
 		"/media/cai/work/ITP_ARINC653/paparazzi/sw/airborne/firmwares/rotorcraft/main.c",
 		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/NewMakefile(withCPP).mk",
 		"/media/cai/work/ITP_ARINC653/ArDroneARINC653/Makefile",
@@ -160,47 +200,18 @@
 		"/media/cai/work/ITP_ARINC653/compilePPZrecord.md",
 		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/mcu_periph/uart.h",
 		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/varinclude/pprzlink/pprz_transport.h",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/datalink/datalink.c",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/imu.c",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/imu.h",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/imu/imu_ardrone2.h",
-		"/media/cai/work/ITP_ARINC653/paparazzi/sw/airborne/arch/linux/mcu_periph/uart_arch.c",
-		"/media/cai/work/Coding/testProg/makeFileTest/hellofunc.cpp",
-		"/media/cai/work/Coding/testProg/makeFileTest/Makefile",
-		"/media/cai/work/ITP_ARINC653/paparazzi/conf/firmwares/subsystems/shared/ahrs_int_cmpl_quat.makefile",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/boards/ardrone/actuators.c",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/boards/ardrone/actuators.h",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/boards/ardrone2.h",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/actuators/actuators_default.h",
-		"/media/cai/work/Coding/testProg/makeFileTest/hellomake.cpp",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/gps/gps_sirf.h",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/gps/gps_sirf.c",
-		"/media/cai/work/ITP_ARINC653/paparazzi/conf/firmwares/subsystems/rotorcraft/gps_sirf.makefile",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/datalink/telemetry.h",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/datalink/downlink.c",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/datalink/downlink.h",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/ppz_ITPV2.files",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/varinclude/pprzlink/dl_protocol.h",
-		"/media/cai/work/ITP_ARINC653/paparazzi/conf/firmwares/subsystems/rotorcraft/gps_ardrone2.makefile",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/arch/linux/mcu_periph/i2c_arch.c",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/mcu_periph/i2c.c",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/mcu_periph/i2c.h",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/state.h",
-		"/media/cai/work/ITP_ARINC653/paparazzi/conf/Makefile.arm-linux-toolchain",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/navigation/waypoints.h",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/navigation/waypoints.c",
-		"/media/cai/work/ITP_ARINC653/paparazzi/Makefile",
-		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/math/pprz_algebra.h"
+		"/media/cai/work/ITP_ARINC653/PPZ_ITPV2/subsystems/datalink/datalink.c"
 	],
 	"find":
 	{
-		"height": 38.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
 		"height": 93.0,
 		"where_history":
 		[
+			"/media/cai/work/ITP_ARINC653/paparazzi",
 			"",
 			"/media/cai/work/ITP_ARINC653/paparazzi",
 			"",
@@ -259,6 +270,36 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"nav_goto_block",
+			"Block(",
+			"TAKEOFF",
+			"link",
+			"takeoff",
+			"cai",
+			"stage_time",
+			"wp_tmp_lla_i",
+			"WAYPOINTS_ENU",
+			"WAYPOINTS_UTM",
+			"nav_climb",
+			"DlSetting",
+			"nav_descend_vspeed",
+			"sys_time",
+			"nav_climb_vspeed",
+			"cdc",
+			">> 15",
+			"agl",
+			"cai",
+			"agl",
+			"nav_altitude",
+			"NavGotoWaypoint",
+			"WAYPOINTS_ENU",
+			"Stage",
+			"nav_stage",
+			"AGL_SONAR_ARDRONE2_ID",
+			"agl",
+			"alt_agl_f",
+			"5.00",
+			"paparazzi.",
 			"startbyte not found",
 			"nav_climb_vspeed",
 			"autopilot_set_mode",
@@ -356,37 +397,7 @@
 			"drone",
 			"USE_UART",
 			"GPS_PORT",
-			"gps",
-			"SIRF_GPS_LINK",
-			"IMU_TYPE_H",
-			"imu_ardrone2.h",
-			"IMU_GYRO_P_SENS_NUM",
-			"firmware_parse_msg",
-			"teleme",
-			"telemetry",
-			"pprz_telemetry",
-			"pprz_transport_init",
-			"pprz_check_and_parse",
-			"downlink.h",
-			"pprz_transport.h",
-			"DL_PING",
-			"DOWNLINK_DEVICE",
-			"link",
-			"downlink_init",
-			"GPS_TYPE_H",
-			"cc ap",
-			"CC /media/cai/work/ITP_ARINC653/paparazzi/var/aircrafts/ardrone2/ap",
-			"i2c_transceive",
-			"i2c_receive",
-			"i2c_transmit",
-			"i2c_submit",
-			"i2c?_init",
-			"i2*1_init",
-			"i2?1_init",
-			"i2c_transceive",
-			"i2c_receive",
-			"i2c_transmit",
-			"i2c_submit"
+			"gps"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -394,55 +405,54 @@
 		"regex": false,
 		"replace_history":
 		[
+			"cai"
 		],
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
 		"whole_word": false,
-		"wrap": true
+		"wrap": false
 	},
 	"groups":
 	[
+		{
+			"sheets":
+			[
+			]
+		},
 		{
 			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "generated/flight_plan.h",
+					"file": "/media/cai/work/ITP_ARINC653/worknote2016.3.26.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14974,
+						"buffer_size": 1049,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5464,
-								5464
+								115,
+								115
 							]
 						],
 						"settings":
 						{
 							"origin_encoding": "ASCII",
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 594.0,
+						"translation.y": 671.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				}
-			]
-		},
-		{
-			"sheets":
-			[
 			]
 		}
 	],
@@ -474,7 +484,7 @@
 		"cols":
 		[
 			0.0,
-			0.632084851407,
+			0.700607902736,
 			1.0
 		],
 		"rows":
@@ -489,7 +499,7 @@
 		"height": 142.0
 	},
 	"pinned_build_system": "",
-	"project": "paparazzi.sublime-project",
+	"project": "partitionPPZ.sublime-project",
 	"replace":
 	{
 		"height": 48.0
@@ -502,19 +512,47 @@
 		"selected_items":
 		[
 			[
-				"flig",
+				"fligh",
 				"generated/flight_plan.h"
 			],
 			[
-				"main",
-				"firmwares/rotorcraft/main.c"
+				"sys",
+				"mcu_periph/sys_time.h"
+			],
+			[
+				"navda",
+				"boards/ardrone/navdata.c"
+			],
+			[
+				"make",
+				"Makefile"
 			],
 			[
 				"fli",
 				"generated/flight_plan.h"
 			],
 			[
+				"way",
+				"subsystems/navigation/waypoints.h"
+			],
+			[
 				"fl",
+				"generated/flight_plan.h"
+			],
+			[
+				"wa",
+				"subsystems/navigation/waypoints.h"
+			],
+			[
+				"main",
+				"firmwares/rotorcraft/main.c"
+			],
+			[
+				"comman",
+				"subsystems/navigation/common_flight_plan.h"
+			],
+			[
+				"flig",
 				"generated/flight_plan.h"
 			],
 			[
@@ -606,10 +644,6 @@
 				"generated/settings.h"
 			],
 			[
-				"make",
-				"Makefile"
-			],
-			[
 				"airf",
 				"generated/airframe.h"
 			],
@@ -630,16 +664,8 @@
 				"sw/airborne/firmwares/rotorcraft/autopilot.h"
 			],
 			[
-				"fligh",
-				"CDCgenerated/flight_plan.h"
-			],
-			[
 				"paparazzi.h",
 				"sw/airborne/paparazzi.h"
-			],
-			[
-				"comman",
-				"sw/airborne/subsystems/commands.h"
 			],
 			[
 				"downlink",
@@ -694,7 +720,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 61.0,
+	"side_bar_width": 50.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

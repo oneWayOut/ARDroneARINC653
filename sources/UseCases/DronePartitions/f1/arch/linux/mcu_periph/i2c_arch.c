@@ -51,7 +51,7 @@ bool_t i2c_idle(struct i2c_periph *p __attribute__((unused)))
 #pragma GCC diagnostic ignored "-Wcast-qual"
 bool_t i2c_submit(struct i2c_periph *p, struct i2c_transaction *t)
 {
-#if 0  //cdc change, this function is useless in ardrone
+#if 0  //cai change, this function is useless in ardrone
   int file = (int)p->reg_addr;
 
   struct i2c_msg trx_msgs[2];
