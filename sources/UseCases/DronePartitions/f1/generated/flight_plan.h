@@ -146,7 +146,7 @@ static inline void auto_nav(void)
 {
   static int mystep=0;
 
-  static uint32_t  seconds  = 0;
+  static uint32_t  lastSec  = 0;
 
   //centi meter above ground, use the ultrasonic sensor data
   static int16_t height = 0;
@@ -189,20 +189,20 @@ static inline void auto_nav(void)
       mystep = 2;
 
       printf("take off at time = %d\n",sys_time.nb_sec);
+      lastSec = sys_time.nb_sec;
     }
   case 2:
     //stay
-    if(height<=110)
+    if(height>1200|| (sys_time.nb_sec-lastSec)>20)
     {
-      vertical_mode = VERTICAL_MODE_ALT;
-      nav_altitude = POS_BFP_OF_REAL(1.1);  //1 meter
+      mystep = 3;
+      printf("begin descend height %dcm at %d\n", height, sys_time.nb_sec);
     }
     else
     {
-      mystep = 3;
-      printf("begin descend at %d \n", sys_time.nb_sec);
+      vertical_mode = VERTICAL_MODE_ALT;
+      nav_altitude = POS_BFP_OF_REAL(0.8);  //1 meter
     }
-    // TODO: maybe we can add some tolerance in this condition so that it can stay for a long time
     break;
   case 3:
     //flare landing
@@ -216,7 +216,6 @@ static inline void auto_nav(void)
 
       printf("descend height = %dcm, time = %d\n", height, sys_time.nb_sec);
 
-      seconds = sys_time.nb_sec;
 
       //cai todo
       NavGotoWaypoint(4);
@@ -224,7 +223,7 @@ static inline void auto_nav(void)
       NavVerticalClimbMode(nav_descend_vspeed);
 
       // the height should be a bit higher than expected, otherwise it will go directly to step 4.
-      if (height<=3||height>160)
+      if (height<=3||height>1800)
       {
         mystep = 4;
         printf("turn off at %d\n", sys_time.nb_sec);

@@ -1,4 +1,10 @@
 #Change Log:
+##2016.3.28
+Commit TestFailed
+Sometimes when we run apAr653.out in drone, there is error '[navdata] sync error, startbyte not found, resetting...'
+the drone is out of control in this condition, but it's quite stable if there is no error.
+
+and the function  navdata_height() I wrote in navdata.c seems not good because sometimes the height was not updated, which will cause severe problems, maybe we should delete the if condition in this function.
 
 ##2016.3.27
 change DronePartitions usecase to takeoff and land and communicate with other partitions.

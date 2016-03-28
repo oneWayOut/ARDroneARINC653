@@ -12,6 +12,8 @@ lib/
 *.creator.user
 *.files
 *.includes
+*.sublime-project
+*.sublime-workspace
 
 # Compiled Object files
 *.slo
