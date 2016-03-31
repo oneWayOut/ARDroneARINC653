@@ -95,7 +95,8 @@ int16_t navdata_height(void) {
   float sonar_meas;
 
   //have new data
-  if (navdata.measure.ultrasound >> 15) {
+  //if (navdata.measure.ultrasound >> 15)
+  {
     previousHeight = (int16_t)(((navdata.measure.ultrasound & 0x7FFF) - SONAR_OFFSET) * SONAR_SCALE *100.0);
   }
   return previousHeight;

@@ -184,7 +184,7 @@ static inline void auto_nav(void)
       //takeoff
       vertical_mode = VERTICAL_MODE_CLIMB;
       //nav_climb = SPEED_BFP_OF_REAL(nav_climb_vspeed); //climb_vspeed = 0.5
-      nav_climb = SPEED_BFP_OF_REAL(0.3);  //decrease the climb_vspeed
+      nav_climb = SPEED_BFP_OF_REAL(0.15);  //decrease the climb_vspeed
 
       mystep = 2;
 
@@ -193,7 +193,7 @@ static inline void auto_nav(void)
     }
   case 2:
     //stay
-    if(height>1200|| (sys_time.nb_sec-lastSec)>20)
+    if(height>200|| (sys_time.nb_sec-lastSec)>20)
     {
       mystep = 3;
       printf("begin descend height %dcm at %d\n", height, sys_time.nb_sec);
@@ -223,7 +223,7 @@ static inline void auto_nav(void)
       NavVerticalClimbMode(nav_descend_vspeed);
 
       // the height should be a bit higher than expected, otherwise it will go directly to step 4.
-      if (height<=3||height>1800)
+      if (height<=3||height>220)
       {
         mystep = 4;
         printf("turn off at %d\n", sys_time.nb_sec);

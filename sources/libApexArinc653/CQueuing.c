@@ -67,12 +67,12 @@ typedef int  int RETURN_CODE_TYPE;*/
  * @return 
  */
 //int SEND_QUEUING_MESSAGE(char *name, int portId, int sock, char *emetteur, char *message) {
-//TODO add msgSize in the function
+//we changed the strcpy to memcpy in this function to avoid integer buffer message transmit error.
 int SEND_QUEUING_MESSAGE(char *name, int portId, int sock, char *emetteur, char *message, int msgSize) {
 
     const char *str1 = message; //convert char to const char
     Type_Message myMessage;
-	if(msgSize>=MSG_LENGTH)
+	if(msgSize>=MSG_LENGTH)  // avoid overflow
 	{
 		perror("msg too long.");
         return (-1);

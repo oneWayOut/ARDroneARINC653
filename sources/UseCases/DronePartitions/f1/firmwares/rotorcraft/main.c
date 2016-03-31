@@ -84,8 +84,10 @@ PRINT_CONFIG_MSG_VALUE("USE_BARO_BOARD is TRUE, reading onboard baro: ", BARO_BO
 #include "generated/modules.h"
 #include "subsystems/abi.h"
 
-#define USE_AR653COM 0
 
+//This is only a basic Arinc653 message communication test
+//Can add more messages to control the drone in future
+#define USE_AR653COM 0
 #if USE_AR653COM
 #include "Com_AR653Msg.h"
 #endif
